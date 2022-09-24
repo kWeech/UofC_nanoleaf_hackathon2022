@@ -129,10 +129,27 @@ if __name__ == "__main__":
     # Isaiah's code:
     # Getting all files from folder
     # directory name
-    file_list = []
-    for file in os.scandir('image_files'):
-        if file.path.endswith('.html'):
-            file_list = file_list + [file.path]
+    file_list = [
+                    'image_files/background.html',
+                    'image_files/UofC_title.html',
+                    'image_files/dino_standing.html',
+                    'image_files/dino_roar.html',
+                    'image_files/dino_standing.html',
+                    'image_files/dino_mouth_open.html',
+                    'image_files/dino_fire_0.html',
+                    'image_files/dino_fire_1.html',
+                    'image_files/dino_fire_2.html',
+                    'image_files/dino_fire_3.html',
+                    'image_files/dino_mouth_open.html',
+                    'image_files/dino_standing.html',
+                    'image_files/dino_front.html',
+                    'image_files/dino_front_open.html',
+                    'image_files/dino_front_fire_0.html',
+                    'image_files/dino_front_fire_1.html',
+                    'image_files/dino_front_fire_2.html',
+                    'image_files/dino_front_fire_3.html',
+                    'image_files/go_dinos.html'
+                    ]
 
     for curr_file in file_list:
         html_info = pd.DataFrame()
