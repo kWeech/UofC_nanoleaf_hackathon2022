@@ -148,8 +148,25 @@ if __name__ == "__main__":
     for i in range(10):
         position_data_dict[i] = data[i]['panelLayout']['layout']['positionData']
     
-    print(position_data_dict[5][1]['panelId'])
+    #Creates dictionary that has row and panel ID
+    print(position_data_dict)
     positionData5 = data5['panelLayout']['layout']['positionData']
+    #print(positionData5)
+
+    #Creates a list of lists that contain the panelIds
+    panel_ids = []
+    for i in position_data_dict:
+        panel_ids.append([])
+        #print(dictionary_data[i])
+        for j in position_data_dict[i]:
+            #print(j['panelId'])
+            panel_ids[i].append(j['panelId'])
+
+    #Creates a new dictionary that contains only the row and panel Ids
+    panel_id_dict = {}
+    for i in range(10):
+        panel_id_dict[i] = panel_ids[i]
+
     setStreamControlMode(ip5, auth5, 1)
     frames5 = []
     T = 2
