@@ -51,12 +51,40 @@ for i in dictionary_data:
         #print(j['panelId'])
         panel_ids[i].append(j['panelId'])
 
+#Figure out how to split up first row and last row!!!!!!!!!!!!!!!!!!!!!
+# #Splits up the first row into 2 rows 
+# zero_row = panel_ids[0][0:14]
+# zero_row.append(panel_ids[0][26])
+
+# first_row = panel_ids[0][15:25]
+
+# #Add new list of lists for the first two rows 
+# panel_ids.pop(0)
+# panel_ids.insert(1, zero_row)
+# panel_ids.insert(0,first_row)
+
+# #Splits up last row into two rows
+# nine_row = panel_ids[9][0:14] 
+# #nine_row.append(panel_ids[9][26])
+
+# ten_row = panel_ids[9][15:25]
+
+# #Add new list of lists for last two rows
+# panel_ids.pop(9)
+# panel_ids.insert(9, nine_row)
+# panel_ids.insert(10, ten_row)
+
+# print(panel_ids)
+
 #Creates a new dictionary that contains the row and panel Ids
 panel_id_dict = {}
 
 for i in range(10):
     panel_id_dict[i] = panel_ids[i]
 
-print(panel_id_dict)
+
+#print(panel_id_dict[0][0:14])
+
+#print(panel_id_dict)
         
 
