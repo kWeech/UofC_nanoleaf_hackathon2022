@@ -148,8 +148,6 @@ if __name__ == "__main__":
     for i in range(10):
         position_data_dict[i] = data[i]['panelLayout']['layout']['positionData']
     
-    #Creates dictionary that has row and panel ID
-    print(position_data_dict)
     positionData5 = data5['panelLayout']['layout']['positionData']
     #print(positionData5)
 
