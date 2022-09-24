@@ -195,6 +195,7 @@ if __name__ == "__main__":
     file_list = [
         'image_files/background.html',
         'image_files/UofC_title.html',
+        'image_files/UofC_title.html',
         'image_files/dino_standing.html',
         'image_files/dino_roar.html',
         'image_files/dino_standing.html',
@@ -212,48 +213,52 @@ if __name__ == "__main__":
         'image_files/dino_front_fire_2.html',
         'image_files/dino_front_fire_3.html',
         'image_files/go_dinos.html'
+        'image_files/go_dinos2.html'
+        'image_files/go_dinos.html'
+        'image_files/go_dinos2.html'
     ]
+    while(True):
+        for curr_file in file_list:
+            html_info = pd.DataFrame()
+            file = codecs.open(curr_file, "r", "utf-8")
+            my_file_info = file.read()
+            extract_script = re.compile(
+                r"fill\=\"(?P<Colour>[\#[0-9a-zA-Z]*)\" rel\=\"(?P<Number>[0-9]+)")
+            matchiter = extract_script.finditer(my_file_info)
+            for match in matchiter:
+                # print(match.groupdict())
+                html_info = html_info.append(
+                    match.groupdict(), ignore_index=True)
 
-    for curr_file in file_list:
-        html_info = pd.DataFrame()
-        file = codecs.open(curr_file, "r", "utf-8")
-        my_file_info = file.read()
-        extract_script = re.compile(
-            r"fill\=\"(?P<Colour>[\#[0-9a-zA-Z]*)\" rel\=\"(?P<Number>[0-9]+)")
-        matchiter = extract_script.finditer(my_file_info)
-        for match in matchiter:
-            # print(match.groupdict())
-            html_info = html_info.append(match.groupdict(), ignore_index=True)
+            FinalTable = pd.DataFrame()
+            FinalTable = pd.concat([FinalTable, html_info.apply(
+                hex_to_rgb, axis=1)])
+            FinalTable = FinalTable.rename(
+                columns={0: "Id", 1: "R", 2: "G", 3: "B"})
+            # FinalTable = FinalTable.astype(int)
+            # print(FinalTable.iloc[:20])
 
-        FinalTable = pd.DataFrame()
-        FinalTable = pd.concat([FinalTable, html_info.apply(
-            hex_to_rgb, axis=1)])
-        FinalTable = FinalTable.rename(
-            columns={0: "Id", 1: "R", 2: "G", 3: "B"})
-        # FinalTable = FinalTable.astype(int)
-        # print(FinalTable.iloc[:20])
+            ips = ["192.168.1.14", "192.168.1.14", "192.168.1.13", "192.168.1.12", "192.168.1.10", "192.168.1.11",
+                   "192.168.1.9", "192.168.1.4", "192.168.1.5", "192.168.1.3", "192.168.1.2", "192.168.1.2"]
+            # For loop iterating through panelId dict and color table
+            frames5 = []
+            rownum = 0
+            panel_id = 0
+            iterate_row = 0
+            for index, panel in FinalTable.iterrows():
+                if (iterate_row == 25):
+                    sendStreamControlFrames(frames5, ips[rownum])
+                    frames5 = []
+                    rownum += 1
+                    iterate_row = 0
+                    panel_id = 0
 
-        ips = ["192.168.1.14", "192.168.1.14", "192.168.1.13", "192.168.1.12", "192.168.1.10", "192.168.1.11",
-               "192.168.1.9", "192.168.1.4", "192.168.1.5", "192.168.1.3", "192.168.1.2", "192.168.1.2"]
-        # For loop iterating through panelId dict and color table
-        frames5 = []
-        rownum = 0
-        panel_id = 0
-        iterate_row = 0
-        for index, panel in FinalTable.iterrows():
-            if (iterate_row == 25):
-                sendStreamControlFrames(frames5, ips[rownum])
-                frames5 = []
-                rownum += 1
-                iterate_row = 0
-                panel_id = 0
-
-            if (panel['R'] == 50 & panel['G'] == 50 & panel['B'] == 50):
-                pass
-            else:
-                frame = {'panelId': panel_id_dict[rownum][panel_id],
-                         'R': panel['R'], 'G': panel['G'], 'B': panel['B'], 'T': 1}
-                frames5.append(frame)
-                panel_id += 1
-            iterate_row += 1
-        sendStreamControlFrames(frames5, ips[rownum])
+                if (panel['R'] == 50 & panel['G'] == 50 & panel['B'] == 50):
+                    pass
+                else:
+                    frame = {'panelId': panel_id_dict[rownum][panel_id],
+                             'R': panel['R'], 'G': panel['G'], 'B': panel['B'], 'T': 1}
+                    frames5.append(frame)
+                    panel_id += 1
+                iterate_row += 1
+            sendStreamControlFrames(frames5, ips[rownum])
