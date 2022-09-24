@@ -169,10 +169,31 @@ if __name__ == "__main__":
         for j in position_data_dict[i]:
             #print(j['panelId'])
             panel_ids[i].append(j['panelId'])
+    
+    #Split up first controller into two rows
+    first_row = panel_ids[0][0:14]
+    first_row.append(panel_ids[0][27])
+    zero_row = panel_ids[0][14:27]
+
+    #Insert new list
+    panel_ids.pop(0)
+    panel_ids.insert(0, first_row)
+    panel_ids.insert(0,zero_row)
+
+    nine_row = panel_ids[10][0:14] 
+    nine_row.append(panel_ids[10][27])
+
+    ten_row = panel_ids[10][14:27]
+    #print(ten_row)
+
+    #Add new list of lists for last two rows
+    panel_ids.pop(10)
+    panel_ids.insert(10, nine_row)
+    panel_ids.insert(10, ten_row)
 
     #Creates a new dictionary that contains only the row and panel Ids
     panel_id_dict = {}
-    for i in range(10):
+    for i in range(12):
         panel_id_dict[i] = panel_ids[i]
 
     #For loop iterating through panelId dict and color table

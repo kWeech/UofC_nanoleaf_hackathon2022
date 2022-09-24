@@ -51,46 +51,46 @@ for i in dictionary_data:
         #print(j['panelId'])
         panel_ids[i].append(j['panelId'])
 
-print(panel_ids)
+#print(panel_ids)
 #Figure out how to split up first row and last row!!!!!!!!!!!!!!!!!!!!!
-#Splits up the first row into 2 rows 
+#Splits up the first row into 2 rows
 first_row = panel_ids[0][0:14]
 first_row.append(panel_ids[0][27])
-print(first_row)
+#print(first_row)
 
-zero_row = panel_ids[0][15:27]
-print(zero_row)
+zero_row = panel_ids[0][14:27]
+#print(zero_row)
 
 #Add new list of lists for the first two rows 
 panel_ids.pop(0)
-panel_ids.insert(1, first_row)
+panel_ids.insert(0, first_row)
 panel_ids.insert(0,zero_row)
 
-print(panel_ids)
+#print(panel_ids)
 
-# #Splits up last row into two rows
-# nine_row = panel_ids[9][0:14] 
-# #nine_row.append(panel_ids[9][26])
+#Splits up last row into two rows
+nine_row = panel_ids[10][0:14] 
+nine_row.append(panel_ids[10][27])
 
-# ten_row = panel_ids[9][15:25]
+ten_row = panel_ids[10][14:27]
+#print(ten_row)
 
-# #Add new list of lists for last two rows
-# panel_ids.pop(9)
-# panel_ids.insert(9, nine_row)
-# panel_ids.insert(10, ten_row)
+#Add new list of lists for last two rows
+panel_ids.pop(10)
+panel_ids.insert(10, nine_row)
+panel_ids.insert(10, ten_row)
 
-# print(panel_ids)
+#print(panel_ids)
 
 #Creates a new dictionary that contains the row and panel Ids
 panel_id_dict = {}
 
-for i in range(10):
+for i in range(12):
     panel_id_dict[i] = panel_ids[i]
-
 
 #print(panel_id_dict[0][0:14])
 
 print(panel_id_dict)
-print(panel_id_dict[0][4])
+#print(panel_id_dict[0][4])
         
 
