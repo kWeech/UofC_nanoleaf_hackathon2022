@@ -202,6 +202,7 @@ if __name__ == "__main__":
             file_list = file_list + [file.path]
 
     for curr_file in file_list:
+        time.sleep(3)
         html_info = pd.DataFrame()
         file = codecs.open(curr_file, "r", "utf-8")
         my_file_info = file.read()
