@@ -113,9 +113,9 @@ if __name__ == "__main__":
 
     panel_ids.pop(10)
     panel_ids.insert(10, nine_row)
-    panel_ids.insert(10, ten_row)
+    panel_ids.insert(11, ten_row)
     print(panel_ids)
-    
+
     panel_id_dict = {}
 
     for i in range(12):
