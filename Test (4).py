@@ -142,7 +142,7 @@ if __name__ == "__main__":
             r"fill\=\"(?P<Colour>[\#[0-9a-zA-Z]*)\" rel\=\"(?P<Number>[0-9]+)")
         matchiter = extract_script.finditer(my_file_info)
         for match in matchiter:
-            print(match.groupdict())
+            # print(match.groupdict())
             html_info = html_info.append(match.groupdict(), ignore_index=True)
 
         FinalTable = pd.DataFrame()
