@@ -212,13 +212,14 @@ if __name__ == "__main__":
         'image_files/dino_front_fire_1.html',
         'image_files/dino_front_fire_2.html',
         'image_files/dino_front_fire_3.html',
-        'image_files/go_dinos.html'
-        'image_files/go_dinos2.html'
-        'image_files/go_dinos.html'
+        'image_files/go_dinos.html',
+        'image_files/go_dinos2.html',
+        'image_files/go_dinos.html',
         'image_files/go_dinos2.html'
     ]
     while(True):
         for curr_file in file_list:
+            time.sleep(0.4)
             html_info = pd.DataFrame()
             file = codecs.open(curr_file, "r", "utf-8")
             my_file_info = file.read()
