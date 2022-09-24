@@ -212,7 +212,7 @@ if __name__ == "__main__":
         else:
             frame = {'panelId': panel_id_dict[rownum][panel_id],
                      'R': panel['R'], 'G': panel['G'], 'B': panel['B'], 'T': 1}
-            frames5 += frame
+            frames5.append(frame)
             panel_id += 1
         iterate_row += 1
 
