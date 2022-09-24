@@ -1,0 +1,444 @@
+
+<!-- saved from url=(0044)https://maxwellito.github.io/triangulart/#16 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Head (banging?) -->
+  <title>triangulart - isometric graphic editor</title>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <link rel="shortcut icon" href="https://maxwellito.github.io/triangulart/assets/favicon.ico">
+  <meta name="theme-color" content="#f9f9f9">
+
+  <link rel="manifest" href="https://maxwellito.github.io/triangulart/manifest.json">
+
+  <!-- Add to home screen for Safari on iOS -->
+  <link rel="apple-touch-icon" href="https://maxwellito.github.io/triangulart/assets/icons/ios-180x180.png">
+  <link rel="apple-touch-startup-image" href="https://maxwellito.github.io/triangulart/assets/ios-startup/startup-640x1136.png" media="device-width: 375px">
+  <link rel="apple-touch-startup-image" href="https://maxwellito.github.io/triangulart/assets/ios-startup/startup-1080x1920.png" media="device-width: 414px">
+  <link rel="apple-touch-startup-image" href="https://maxwellito.github.io/triangulart/assets/ios-startup/startup-640x1136.png" media="(device-width: 320px) and (device-height: 568px)">
+  <link rel="apple-touch-startup-image" href="https://maxwellito.github.io/triangulart/assets/ios-startup/startup-640x960.png" media="(device-width: 320px) and (device-height: 480px)">
+
+  <meta name="apple-mobile-web-app-title" content="Triangulart">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="768">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  
+  <meta name="msapplication-TileImage" content="assets/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#f9f9f9">
+
+  <!-- Le style -->
+  <link rel="stylesheet" href="./dino_fire_0_files/style.css" media="screen" charset="utf-8">
+<link href="chrome-extension://idpbkophnbfijcnlffdmmppgnncgappc/css/content.css" rel="stylesheet" type="text/css"><style type="text/css">.movable{cursor:move}.selector-rect{fill:#fff;fill-opacity:.01;stroke:#666;stroke-dasharray:4px;animation:1s selector-stroke linear infinite}@keyframes selector-stroke{0%{stroke:#666;stroke-dashoffset:0}49.9%{stroke:#666}50%{stroke:#999}99.9%{stroke:#999}to{stroke:#666;stroke-dashoffset:8px}}</style><style type="text/css">.nav-actions:after{content:"";display:block;clear:both}@media (max-width:480px){.launcher{padding:1.5rem}.launcher-action-box{display:flex;align-items:center}.launcher-action-box+.launcher-action-box{margin-top:.5rem}.launcher-action-icon{width:48px;min-width:48px;height:48px;margin-right:.5rem}.grid-orientation-picker{max-width:200px;margin-left:auto;margin-right:auto}}@media (min-width:481px){.launcher{position:fixed;left:0;right:0;z-index:10;width:100%;height:100%;max-width:960px;margin:auto;padding:2rem;box-sizing:border-box;background-color:#fff}.launcher-content{display:flex;align-items:center;justify-content:center;flex-direction:column;width:100%;height:100%}.launcher-action-box{width:30%;text-align:center;cursor:pointer}.launcher-action-icon{display:block;width:72px;height:72px;margin:0 auto 1rem}}</style><style type="text/css">.intro-logo{padding-right:2rem;border-right:1px solid currentColor;margin-right:2rem;width:20%}.credits svg{vertical-align:sub}@media (max-width:480px){.intro-logo{padding-right:0;border-right:none;margin-right:0;width:200px;max-width:50%}}</style><style type="text/css">.playground svg{cursor:crosshair;margin:1rem 1rem 80px}.grid path,.playground path{stroke:currentColor;stroke-width:.25}</style><style type="text/css">.horizontal-toolbar,.palette,.toolbar{display:flex;align-items:center}.toolbar{position:fixed;flex-direction:row;justify-content:space-between;bottom:0;width:100%;padding:.5rem;background-color:#131016;color:#ccc;box-sizing:border-box}.toolbar .icon{width:2rem;height:2rem}.toolbar-item{height:2rem;cursor:pointer}.toolbar-item+.toolbar-item{margin-left:.5rem}.active{color:#1af}.palette{padding:.25rem;border:1px solid #fff;border-radius:1rem;margin-left:.5rem;box-sizing:border-box}.palette-color{display:inline-block;width:1.375em;height:1.375em;border-radius:50%;box-sizing:border-box;text-align:center;line-height:1.3;cursor:pointer}.palette-color.active{border:.2em double #fff}.palette-color+.palette-color{margin-left:.25rem}@media (max-width:768px){.toolbar{flex-wrap:wrap}.palette-tool{width:100%;order:10;justify-content:center;margin-top:.5rem}}</style><style type="text/css">svg.icon{cursor:pointer}.component-container{position:relative}.color-picker{position:absolute;top:-250px;left:-120px;height:240px}.color-value{display:inline-block;width:1em;height:1em;vertical-align:super;border-radius:50%}</style><style type="text/css">
+.vc-chrome {
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.3);
+  box-sizing: initial;
+  width: 225px;
+  font-family: Menlo;
+  background-color: #fff;
+}
+.vc-chrome-controls {
+  display: flex;
+}
+.vc-chrome-color-wrap {
+  position: relative;
+  width: 36px;
+}
+.vc-chrome-active-color {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  z-index: 1;
+}
+.vc-chrome-color-wrap .vc-checkerboard {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-size: auto;
+}
+.vc-chrome-sliders {
+  flex: 1;
+}
+.vc-chrome-fields-wrap {
+  display: flex;
+  padding-top: 16px;
+}
+.vc-chrome-fields {
+  display: flex;
+  margin-left: -6px;
+  flex: 1;
+}
+.vc-chrome-field {
+  padding-left: 6px;
+  width: 100%;
+}
+.vc-chrome-toggle-btn {
+  width: 32px;
+  text-align: right;
+  position: relative;
+}
+.vc-chrome-toggle-icon {
+  margin-right: -4px;
+  margin-top: 12px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+.vc-chrome-toggle-icon-highlight {
+  position: absolute;
+  width: 24px;
+  height: 28px;
+  background: #eee;
+  border-radius: 4px;
+  top: 10px;
+  left: 12px;
+}
+.vc-chrome-hue-wrap {
+  position: relative;
+  height: 10px;
+  margin-bottom: 8px;
+}
+.vc-chrome-alpha-wrap {
+  position: relative;
+  height: 10px;
+}
+.vc-chrome-hue-wrap .vc-hue {
+  border-radius: 2px;
+}
+.vc-chrome-alpha-wrap .vc-alpha-gradient {
+  border-radius: 2px;
+}
+.vc-chrome-hue-wrap .vc-hue-picker, .vc-chrome-alpha-wrap .vc-alpha-picker {
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  transform: translate(-6px, -2px);
+  background-color: rgb(248, 248, 248);
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+.vc-chrome-body {
+  padding: 16px 16px 12px;
+  background-color: #fff;
+}
+.vc-chrome-saturation-wrap {
+  width: 100%;
+  padding-bottom: 55%;
+  position: relative;
+  border-radius: 2px 2px 0 0;
+  overflow: hidden;
+}
+.vc-chrome-saturation-wrap .vc-saturation-circle {
+  width: 12px;
+  height: 12px;
+}
+.vc-chrome-fields .vc-input__input {
+  font-size: 11px;
+  color: #333;
+  width: 100%;
+  border-radius: 2px;
+  border: none;
+  box-shadow: inset 0 0 0 1px #dadada;
+  height: 21px;
+  text-align: center;
+}
+.vc-chrome-fields .vc-input__label {
+  text-transform: uppercase;
+  font-size: 11px;
+  line-height: 11px;
+  color: #969696;
+  text-align: center;
+  display: block;
+  margin-top: 12px;
+}
+.vc-chrome__disable-alpha .vc-chrome-active-color {
+  width: 18px;
+  height: 18px;
+}
+.vc-chrome__disable-alpha .vc-chrome-color-wrap {
+  width: 30px;
+}
+.vc-chrome__disable-alpha .vc-chrome-hue-wrap {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+</style><style type="text/css">
+.vc-saturation,
+.vc-saturation--white,
+.vc-saturation--black {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.vc-saturation--white {
+  background: linear-gradient(to right, #fff, rgba(255,255,255,0));
+}
+.vc-saturation--black {
+  background: linear-gradient(to top, #000, rgba(0,0,0,0));
+}
+.vc-saturation-pointer {
+  cursor: pointer;
+  position: absolute;
+}
+.vc-saturation-circle {
+  cursor: head;
+  width: 4px;
+  height: 4px;
+  box-shadow: 0 0 0 1.5px #fff, inset 0 0 1px 1px rgba(0,0,0,.3), 0 0 1px 2px rgba(0,0,0,.4);
+  border-radius: 50%;
+  transform: translate(-2px, -2px);
+}
+</style><style type="text/css">
+.vc-checkerboard {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-size: contain;
+}
+</style><style type="text/css">
+.vc-hue {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 2px;
+}
+.vc-hue--horizontal {
+  background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+}
+.vc-hue--vertical {
+  background: linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+}
+.vc-hue-container {
+  cursor: pointer;
+  margin: 0 2px;
+  position: relative;
+  height: 100%;
+}
+.vc-hue-pointer {
+  z-index: 2;
+  position: absolute;
+}
+.vc-hue-picker {
+  cursor: pointer;
+  margin-top: 1px;
+  width: 4px;
+  border-radius: 1px;
+  height: 8px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, .6);
+  background: #fff;
+  transform: translateX(-2px) ;
+}
+</style><style type="text/css">
+.vc-alpha {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+.vc-alpha-checkboard-wrap {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.vc-alpha-gradient {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+.vc-alpha-container {
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  margin: 0 3px;
+}
+.vc-alpha-pointer {
+  z-index: 2;
+  position: absolute;
+}
+.vc-alpha-picker {
+  cursor: pointer;
+  width: 4px;
+  border-radius: 1px;
+  height: 8px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, .6);
+  background: #fff;
+  margin-top: 1px;
+  transform: translateX(-2px);
+}
+</style><style type="text/css">
+.vc-editable-input {
+  position: relative;
+}
+.vc-input__input {
+  padding: 0;
+  border: 0;
+  outline: none;
+}
+.vc-input__label {
+  text-transform: capitalize;
+}
+</style><style data-styled="active" data-styled-version="5.3.5"></style><style data-styled-components=""></style></head>
+<body data-new-gr-c-s-check-loaded="14.1080.0" data-gr-ext-installed="">
+
+  <div><span><div class="launcher" style="display: none;"><div class="launcher-content"><div class="row row-inline"><object data="./dino_fire_0_files/triangulart_logo.svg" type="image/svg+xml" class="intro-logo"></object> <div><h1>triangulart <small>[v2 beta]</small></h1> <p>Graphic editor to create isometric illustrations, it's like pixel art but with triangles.<br>
+         Don't forget to share your creation with <a href="https://twitter.com/search?q=%23triangulart">#triangulart</a></p> <p class="credits">
+        by <a href="https://twitter.com/mxwllt"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-maxwellito"></use></svg></a> / on <a href="https://github.com/maxwellito/triangulart"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-github"></use></svg></a></p></div></div> <div class="row row-balanced"><label class="launcher-action-box"><svg class="launcher-action-icon"><use xlink:href="#action-import"></use></svg> <span>Upload project</span> <input type="file" accept=".json, .svg" class="hidden"></label> <div class="launcher-action-box"><svg class="launcher-action-icon"><use xlink:href="#action-add"></use></svg> <span>Start a new canvas</span></div> <div class="launcher-action-box"><svg class="launcher-action-icon"><use xlink:href="#action-floppydisk"></use></svg> <span>Load previous project 
+        <span class="notif">12</span></span></div></div></div></div><div style=""><div class="playground"><svg version="1.1" preserveAspectRatio="xMinYMin slice" xmlns="http://www.w3.org/2000/svg" width="390" height="312" viewBox="0 0 390 312"><path d="M15 0 L0 26 L30 26 Z" fill="#323232" rel="0"></path><path d="M15 0 L30 26 L45 0 Z" fill="#323232" rel="1"></path><path d="M45 0 L30 26 L60 26 Z" fill="#323232" rel="2"></path><path d="M45 0 L60 26 L75 0 Z" fill="#323232" rel="3"></path><path d="M75 0 L60 26 L90 26 Z" fill="#323232" rel="4"></path><path d="M75 0 L90 26 L105 0 Z" fill="#323232" rel="5"></path><path d="M105 0 L90 26 L120 26 Z" fill="#FFFF00" rel="6"></path><path d="M105 0 L120 26 L135 0 Z" fill="#FFFF00" rel="7"></path><path d="M135 0 L120 26 L150 26 Z" fill="#FFFF00" rel="8"></path><path d="M135 0 L150 26 L165 0 Z" fill="#00D0FF" rel="9"></path><path d="M165 0 L150 26 L180 26 Z" fill="#00D0FF" rel="10"></path><path d="M165 0 L180 26 L195 0 Z" fill="#FFFFFF" rel="11"></path><path d="M195 0 L180 26 L210 26 Z" fill="#FFFFFF" rel="12"></path><path d="M195 0 L210 26 L225 0 Z" fill="#FFFFFF" rel="13"></path><path d="M225 0 L210 26 L240 26 Z" fill="#FFFFFF" rel="14"></path><path d="M225 0 L240 26 L255 0 Z" fill="#FFFFFF" rel="15"></path><path d="M255 0 L240 26 L270 26 Z" fill="#00D0FF" rel="16"></path><path d="M255 0 L270 26 L285 0 Z" fill="#00D0FF" rel="17"></path><path d="M285 0 L270 26 L300 26 Z" fill="#00D0FF" rel="18"></path><path d="M285 0 L300 26 L315 0 Z" fill="#323232" rel="19"></path><path d="M315 0 L300 26 L330 26 Z" fill="#323232" rel="20"></path><path d="M315 0 L330 26 L345 0 Z" fill="#323232" rel="21"></path><path d="M345 0 L330 26 L360 26 Z" fill="#323232" rel="22"></path><path d="M345 0 L360 26 L375 0 Z" fill="#323232" rel="23"></path><path d="M375 0 L360 26 L390 26 Z" fill="#323232" rel="24"></path><path d="M0 26 L15 52 L30 26 Z" fill="#323232" rel="25"></path><path d="M30 26 L15 52 L45 52 Z" fill="#323232" rel="26"></path><path d="M30 26 L45 52 L60 26 Z" fill="#323232" rel="27"></path><path d="M60 26 L45 52 L75 52 Z" fill="#323232" rel="28"></path><path d="M60 26 L75 52 L90 26 Z" fill="#323232" rel="29"></path><path d="M90 26 L75 52 L105 52 Z" fill="#00D0FF" rel="30"></path><path d="M90 26 L105 52 L120 26 Z" fill="#FFFF00" rel="31"></path><path d="M120 26 L105 52 L135 52 Z" fill="#FFFF00" rel="32"></path><path d="M120 26 L135 52 L150 26 Z" fill="#FFFF00" rel="33"></path><path d="M150 26 L135 52 L165 52 Z" fill="#00D0FF" rel="34"></path><path d="M150 26 L165 52 L180 26 Z" fill="#00D0FF" rel="35"></path><path d="M180 26 L165 52 L195 52 Z" fill="#00D0FF" rel="36"></path><path d="M180 26 L195 52 L210 26 Z" fill="#00D0FF" rel="37"></path><path d="M210 26 L195 52 L225 52 Z" fill="#F1DD7C" rel="38"></path><path d="M210 26 L225 52 L240 26 Z" fill="#00D0FF" rel="39"></path><path d="M240 26 L225 52 L255 52 Z" fill="#F1DD7C" rel="40"></path><path d="M240 26 L255 52 L270 26 Z" fill="#00D0FF" rel="41"></path><path d="M270 26 L255 52 L285 52 Z" fill="#00D0FF" rel="42"></path><path d="M270 26 L285 52 L300 26 Z" fill="#00D0FF" rel="43"></path><path d="M300 26 L285 52 L315 52 Z" fill="#00D0FF" rel="44"></path><path d="M300 26 L315 52 L330 26 Z" fill="#323232" rel="45"></path><path d="M330 26 L315 52 L345 52 Z" fill="#323232" rel="46"></path><path d="M330 26 L345 52 L360 26 Z" fill="#323232" rel="47"></path><path d="M360 26 L345 52 L375 52 Z" fill="#323232" rel="48"></path><path d="M360 26 L375 52 L390 26 Z" fill="#323232" rel="49"></path><path d="M15 52 L0 78 L30 78 Z" fill="#323232" rel="50"></path><path d="M15 52 L30 78 L45 52 Z" fill="#323232" rel="51"></path><path d="M45 52 L30 78 L60 78 Z" fill="#323232" rel="52"></path><path d="M45 52 L60 78 L75 52 Z" fill="#323232" rel="53"></path><path d="M75 52 L60 78 L90 78 Z" fill="#FFFFFF" rel="54"></path><path d="M75 52 L90 78 L105 52 Z" fill="#FFFFFF" rel="55"></path><path d="M105 52 L90 78 L120 78 Z" fill="#FFFFFF" rel="56"></path><path d="M105 52 L120 78 L135 52 Z" fill="#00D0FF" rel="57"></path><path d="M135 52 L120 78 L150 78 Z" fill="#00D0FF" rel="58"></path><path d="M135 52 L150 78 L165 52 Z" fill="#00D0FF" rel="59"></path><path d="M165 52 L150 78 L180 78 Z" fill="#00D0FF" rel="60"></path><path d="M165 52 L180 78 L195 52 Z" fill="#00D0FF" rel="61"></path><path d="M195 52 L180 78 L210 78 Z" fill="#FF0000" rel="62"></path><path d="M195 52 L210 78 L225 52 Z" fill="#FF0000" rel="63"></path><path d="M225 52 L210 78 L240 78 Z" fill="#FF0000" rel="64"></path><path d="M225 52 L240 78 L255 52 Z" fill="#FF0000" rel="65"></path><path d="M255 52 L240 78 L270 78 Z" fill="#FF0000" rel="66"></path><path d="M255 52 L270 78 L285 52 Z" fill="#00D0FF" rel="67"></path><path d="M285 52 L270 78 L300 78 Z" fill="#00D0FF" rel="68"></path><path d="M285 52 L300 78 L315 52 Z" fill="#00D0FF" rel="69"></path><path d="M315 52 L300 78 L330 78 Z" fill="#00D0FF" rel="70"></path><path d="M315 52 L330 78 L345 52 Z" fill="#323232" rel="71"></path><path d="M345 52 L330 78 L360 78 Z" fill="#323232" rel="72"></path><path d="M345 52 L360 78 L375 52 Z" fill="#323232" rel="73"></path><path d="M375 52 L360 78 L390 78 Z" fill="#323232" rel="74"></path><path d="M0 78 L15 104 L30 78 Z" fill="#323232" rel="75"></path><path d="M30 78 L15 104 L45 104 Z" fill="#323232" rel="76"></path><path d="M30 78 L45 104 L60 78 Z" fill="#323232" rel="77"></path><path d="M60 78 L45 104 L75 104 Z" fill="#FFFFFF" rel="78"></path><path d="M60 78 L75 104 L90 78 Z" fill="#FFFFFF" rel="79"></path><path d="M90 78 L75 104 L105 104 Z" fill="#FFFFFF" rel="80"></path><path d="M90 78 L105 104 L120 78 Z" fill="#FFFFFF" rel="81"></path><path d="M120 78 L105 104 L135 104 Z" fill="#00D0FF" rel="82"></path><path d="M120 78 L135 104 L150 78 Z" fill="#00D0FF" rel="83"></path><path d="M150 78 L135 104 L165 104 Z" fill="#00D0FF" rel="84"></path><path d="M150 78 L165 104 L180 78 Z" fill="#F1DD7C" rel="85"></path><path d="M180 78 L165 104 L195 104 Z" fill="#FF0000" rel="86"></path><path d="M180 78 L195 104 L210 78 Z" fill="#FF0000" rel="87"></path><path d="M210 78 L195 104 L225 104 Z" fill="#FF0000" rel="88"></path><path d="M210 78 L225 104 L240 78 Z" fill="#000000" rel="89"></path><path d="M240 78 L225 104 L255 104 Z" fill="#FF0000" rel="90"></path><path d="M240 78 L255 104 L270 78 Z" fill="#000000" rel="91"></path><path d="M270 78 L255 104 L285 104 Z" fill="#FF0000" rel="92"></path><path d="M270 78 L285 104 L300 78 Z" fill="#00D0FF" rel="93"></path><path d="M300 78 L285 104 L315 104 Z" fill="#00D0FF" rel="94"></path><path d="M300 78 L315 104 L330 78 Z" fill="#00D0FF" rel="95"></path><path d="M330 78 L315 104 L345 104 Z" fill="#00D0FF" rel="96"></path><path d="M330 78 L345 104 L360 78 Z" fill="#323232" rel="97"></path><path d="M360 78 L345 104 L375 104 Z" fill="#323232" rel="98"></path><path d="M360 78 L375 104 L390 78 Z" fill="#323232" rel="99"></path><path d="M15 104 L0 130 L30 130 Z" fill="#323232" rel="100"></path><path d="M15 104 L30 130 L45 104 Z" fill="#323232" rel="101"></path><path d="M45 104 L30 130 L60 130 Z" fill="#00D0FF" rel="102"></path><path d="M45 104 L60 130 L75 104 Z" fill="#00D0FF" rel="103"></path><path d="M75 104 L60 130 L90 130 Z" fill="#00D0FF" rel="104"></path><path d="M75 104 L90 130 L105 104 Z" fill="#00D0FF" rel="105"></path><path d="M105 104 L90 130 L120 130 Z" fill="#00D0FF" rel="106"></path><path d="M105 104 L120 130 L135 104 Z" fill="#00D0FF" rel="107"></path><path d="M135 104 L120 130 L150 130 Z" fill="#00D0FF" rel="108"></path><path d="M135 104 L150 130 L165 104 Z" fill="#F1DD7C" rel="109"></path><path d="M165 104 L150 130 L180 130 Z" fill="#FF0000" rel="110"></path><path d="M165 104 L180 130 L195 104 Z" fill="#FF0000" rel="111"></path><path d="M195 104 L180 130 L210 130 Z" fill="#FF0000" rel="112"></path><path d="M195 104 L210 130 L225 104 Z" fill="#FF0000" rel="113"></path><path d="M225 104 L210 130 L240 130 Z" fill="#000000" rel="114"></path><path d="M225 104 L240 130 L255 104 Z" fill="#FFF9CD" rel="115"></path><path d="M255 104 L240 130 L270 130 Z" fill="#000000" rel="116"></path><path d="M255 104 L270 130 L285 104 Z" fill="#FFF9CD" rel="117"></path><path d="M285 104 L270 130 L300 130 Z" fill="#00D0FF" rel="118"></path><path d="M285 104 L300 130 L315 104 Z" fill="#00D0FF" rel="119"></path><path d="M315 104 L300 130 L330 130 Z" fill="#00D0FF" rel="120"></path><path d="M315 104 L330 130 L345 104 Z" fill="#00D0FF" rel="121"></path><path d="M345 104 L330 130 L360 130 Z" fill="#00D0FF" rel="122"></path><path d="M345 104 L360 130 L375 104 Z" fill="#323232" rel="123"></path><path d="M375 104 L360 130 L390 130 Z" fill="#323232" rel="124"></path><path d="M0 130 L15 156 L30 130 Z" fill="#323232" rel="125"></path><path d="M30 130 L15 156 L45 156 Z" fill="#00D0FF" rel="126"></path><path d="M30 130 L45 156 L60 130 Z" fill="#00D0FF" rel="127"></path><path d="M60 130 L45 156 L75 156 Z" fill="#00D0FF" rel="128"></path><path d="M60 130 L75 156 L90 130 Z" fill="#00D0FF" rel="129"></path><path d="M90 130 L75 156 L105 156 Z" fill="#00D0FF" rel="130"></path><path d="M90 130 L105 156 L120 130 Z" fill="#00D0FF" rel="131"></path><path d="M120 130 L105 156 L135 156 Z" fill="#F1DD7C" rel="132"></path><path d="M120 130 L135 156 L150 130 Z" fill="#00D0FF" rel="133"></path><path d="M150 130 L135 156 L165 156 Z" fill="#FF0000" rel="134"></path><path d="M150 130 L165 156 L180 130 Z" fill="#FF0000" rel="135"></path><path d="M180 130 L165 156 L195 156 Z" fill="#FF0000" rel="136"></path><path d="M180 130 L195 156 L210 130 Z" fill="#FF0000" rel="137"></path><path d="M210 130 L195 156 L225 156 Z" fill="#FF0000" rel="138"></path><path d="M210 130 L225 156 L240 130 Z" fill="#CA4C99" rel="139"></path><path d="M240 130 L225 156 L255 156 Z" fill="#FFF9CD" rel="140"></path><path d="M240 130 L255 156 L270 130 Z" fill="#CA4C99" rel="141"></path><path d="M270 130 L255 156 L285 156 Z" fill="#E25822" rel="142"></path><path d="M270 130 L285 156 L300 130 Z" fill="#FFA500" rel="143"></path><path d="M300 130 L285 156 L315 156 Z" fill="#FF8C00" rel="144"></path><path d="M300 130 L315 156 L330 130 Z" fill="#00D0FF" rel="145"></path><path d="M330 130 L315 156 L345 156 Z" fill="#00D0FF" rel="146"></path><path d="M330 130 L345 156 L360 130 Z" fill="#00D0FF" rel="147"></path><path d="M360 130 L345 156 L375 156 Z" fill="#00D0FF" rel="148"></path><path d="M360 130 L375 156 L390 130 Z" fill="#323232" rel="149"></path><path d="M15 156 L0 182 L30 182 Z" fill="#323232" rel="150"></path><path d="M15 156 L30 182 L45 156 Z" fill="#00D0FF" rel="151"></path><path d="M45 156 L30 182 L60 182 Z" fill="#F1DD7C" rel="152"></path><path d="M45 156 L60 182 L75 156 Z" fill="#00D0FF" rel="153"></path><path d="M75 156 L60 182 L90 182 Z" fill="#F1DD7C" rel="154"></path><path d="M75 156 L90 182 L105 156 Z" fill="#00D0FF" rel="155"></path><path d="M105 156 L90 182 L120 182 Z" fill="#FF0000" rel="156"></path><path d="M105 156 L120 182 L135 156 Z" fill="#FF0000" rel="157"></path><path d="M135 156 L120 182 L150 182 Z" fill="#FF0000" rel="158"></path><path d="M135 156 L150 182 L165 156 Z" fill="#FF0000" rel="159"></path><path d="M165 156 L150 182 L180 182 Z" fill="#FF0000" rel="160"></path><path d="M165 156 L180 182 L195 156 Z" fill="#FF0000" rel="161"></path><path d="M195 156 L180 182 L210 182 Z" fill="#FF0000" rel="162"></path><path d="M195 156 L210 182 L225 156 Z" fill="#FFC400" rel="163"></path><path d="M225 156 L210 182 L240 182 Z" fill="#00D0FF" rel="164"></path><path d="M225 156 L240 182 L255 156 Z" fill="#00D0FF" rel="165"></path><path d="M255 156 L240 182 L270 182 Z" fill="#00D0FF" rel="166"></path><path d="M255 156 L270 182 L285 156 Z" fill="#FF6000" rel="167"></path><path d="M285 156 L270 182 L300 182 Z" fill="#F73718" rel="168"></path><path d="M285 156 L300 182 L315 156 Z" fill="#00D0FF" rel="169"></path><path d="M315 156 L300 182 L330 182 Z" fill="#00D0FF" rel="170"></path><path d="M315 156 L330 182 L345 156 Z" fill="#00D0FF" rel="171"></path><path d="M345 156 L330 182 L360 182 Z" fill="#00D0FF" rel="172"></path><path d="M345 156 L360 182 L375 156 Z" fill="#00D0FF" rel="173"></path><path d="M375 156 L360 182 L390 182 Z" fill="#323232" rel="174"></path><path d="M0 182 L15 208 L30 182 Z" fill="#323232" rel="175"></path><path d="M30 182 L15 208 L45 208 Z" fill="#323232" rel="176"></path><path d="M30 182 L45 208 L60 182 Z" fill="#FF0000" rel="177"></path><path d="M60 182 L45 208 L75 208 Z" fill="#FF0000" rel="178"></path><path d="M60 182 L75 208 L90 182 Z" fill="#FF0000" rel="179"></path><path d="M90 182 L75 208 L105 208 Z" fill="#FF0000" rel="180"></path><path d="M90 182 L105 208 L120 182 Z" fill="#FF0000" rel="181"></path><path d="M120 182 L105 208 L135 208 Z" fill="#FF0000" rel="182"></path><path d="M120 182 L135 208 L150 182 Z" fill="#FF0000" rel="183"></path><path d="M150 182 L135 208 L165 208 Z" fill="#FF0000" rel="184"></path><path d="M150 182 L165 208 L180 182 Z" fill="#FF0000" rel="185"></path><path d="M180 182 L165 208 L195 208 Z" fill="#FFC400" rel="186"></path><path d="M180 182 L195 208 L210 182 Z" fill="#FF0000" rel="187"></path><path d="M210 182 L195 208 L225 208 Z" fill="#CCCBC5" rel="188"></path><path d="M210 182 L225 208 L240 182 Z" fill="#00D0FF" rel="189"></path><path d="M240 182 L225 208 L255 208 Z" fill="#00D0FF" rel="190"></path><path d="M240 182 L255 208 L270 182 Z" fill="#00D0FF" rel="191"></path><path d="M270 182 L255 208 L285 208 Z" fill="#FFFFFF" rel="192"></path><path d="M270 182 L285 208 L300 182 Z" fill="#FFFFFF" rel="193"></path><path d="M300 182 L285 208 L315 208 Z" fill="#FFFFFF" rel="194"></path><path d="M300 182 L315 208 L330 182 Z" fill="#FFFFFF" rel="195"></path><path d="M330 182 L315 208 L345 208 Z" fill="#FFFFFF" rel="196"></path><path d="M330 182 L345 208 L360 182 Z" fill="#00D0FF" rel="197"></path><path d="M360 182 L345 208 L375 208 Z" fill="#323232" rel="198"></path><path d="M360 182 L375 208 L390 182 Z" fill="#323232" rel="199"></path><path d="M15 208 L0 234 L30 234 Z" fill="#323232" rel="200"></path><path d="M15 208 L30 234 L45 208 Z" fill="#323232" rel="201"></path><path d="M45 208 L30 234 L60 234 Z" fill="#323232" rel="202"></path><path d="M45 208 L60 234 L75 208 Z" fill="#00D0FF" rel="203"></path><path d="M75 208 L60 234 L90 234 Z" fill="#00D0FF" rel="204"></path><path d="M75 208 L90 234 L105 208 Z" fill="#FF0000" rel="205"></path><path d="M105 208 L90 234 L120 234 Z" fill="#FF0000" rel="206"></path><path d="M105 208 L120 234 L135 208 Z" fill="#FF0000" rel="207"></path><path d="M135 208 L120 234 L150 234 Z" fill="#FF0000" rel="208"></path><path d="M135 208 L150 234 L165 208 Z" fill="#FF0000" rel="209"></path><path d="M165 208 L150 234 L180 234 Z" fill="#FFC400" rel="210"></path><path d="M165 208 L180 234 L195 208 Z" fill="#FFC400" rel="211"></path><path d="M195 208 L180 234 L210 234 Z" fill="#00D0FF" rel="212"></path><path d="M195 208 L210 234 L225 208 Z" fill="#00D0FF" rel="213"></path><path d="M225 208 L210 234 L240 234 Z" fill="#00D0FF" rel="214"></path><path d="M225 208 L240 234 L255 208 Z" fill="#00D0FF" rel="215"></path><path d="M255 208 L240 234 L270 234 Z" fill="#00D0FF" rel="216"></path><path d="M255 208 L270 234 L285 208 Z" fill="#FFFFFF" rel="217"></path><path d="M285 208 L270 234 L300 234 Z" fill="#FFFFFF" rel="218"></path><path d="M285 208 L300 234 L315 208 Z" fill="#FFFFFF" rel="219"></path><path d="M315 208 L300 234 L330 234 Z" fill="#FFFFFF" rel="220"></path><path d="M315 208 L330 234 L345 208 Z" fill="#FFFFFF" rel="221"></path><path d="M345 208 L330 234 L360 234 Z" fill="#323232" rel="222"></path><path d="M345 208 L360 234 L375 208 Z" fill="#323232" rel="223"></path><path d="M375 208 L360 234 L390 234 Z" fill="#323232" rel="224"></path><path d="M0 234 L15 260 L30 234 Z" fill="#323232" rel="225"></path><path d="M30 234 L15 260 L45 260 Z" fill="#323232" rel="226"></path><path d="M30 234 L45 260 L60 234 Z" fill="#323232" rel="227"></path><path d="M60 234 L45 260 L75 260 Z" fill="#323232" rel="228"></path><path d="M60 234 L75 260 L90 234 Z" fill="#00D0FF" rel="229"></path><path d="M90 234 L75 260 L105 260 Z" fill="#00D0FF" rel="230"></path><path d="M90 234 L105 260 L120 234 Z" fill="#FF0000" rel="231"></path><path d="M120 234 L105 260 L135 260 Z" fill="#FF0000" rel="232"></path><path d="M120 234 L135 260 L150 234 Z" fill="#FF0000" rel="233"></path><path d="M150 234 L135 260 L165 260 Z" fill="#FFC400" rel="234"></path><path d="M150 234 L165 260 L180 234 Z" fill="#FFC400" rel="235"></path><path d="M180 234 L165 260 L195 260 Z" fill="#FF0000" rel="236"></path><path d="M180 234 L195 260 L210 234 Z" fill="#00D0FF" rel="237"></path><path d="M210 234 L195 260 L225 260 Z" fill="#00D0FF" rel="238"></path><path d="M210 234 L225 260 L240 234 Z" fill="#00D0FF" rel="239"></path><path d="M240 234 L225 260 L255 260 Z" fill="#00D0FF" rel="240"></path><path d="M240 234 L255 260 L270 234 Z" fill="#00D0FF" rel="241"></path><path d="M270 234 L255 260 L285 260 Z" fill="#00D0FF" rel="242"></path><path d="M270 234 L285 260 L300 234 Z" fill="#00D0FF" rel="243"></path><path d="M300 234 L285 260 L315 260 Z" fill="#00D0FF" rel="244"></path><path d="M300 234 L315 260 L330 234 Z" fill="#00D0FF" rel="245"></path><path d="M330 234 L315 260 L345 260 Z" fill="#323232" rel="246"></path><path d="M330 234 L345 260 L360 234 Z" fill="#323232" rel="247"></path><path d="M360 234 L345 260 L375 260 Z" fill="#323232" rel="248"></path><path d="M360 234 L375 260 L390 234 Z" fill="#323232" rel="249"></path><path d="M15 260 L0 286 L30 286 Z" fill="#323232" rel="250"></path><path d="M15 260 L30 286 L45 260 Z" fill="#323232" rel="251"></path><path d="M45 260 L30 286 L60 286 Z" fill="#323232" rel="252"></path><path d="M45 260 L60 286 L75 260 Z" fill="#323232" rel="253"></path><path d="M75 260 L60 286 L90 286 Z" fill="#323232" rel="254"></path><path d="M75 260 L90 286 L105 260 Z" fill="#008013" rel="255"></path><path d="M105 260 L90 286 L120 286 Z" fill="#FF0000" rel="256"></path><path d="M105 260 L120 286 L135 260 Z" fill="#FF0000" rel="257"></path><path d="M135 260 L120 286 L150 286 Z" fill="#008013" rel="258"></path><path d="M135 260 L150 286 L165 260 Z" fill="#008013" rel="259"></path><path d="M165 260 L150 286 L180 286 Z" fill="#FF0000" rel="260"></path><path d="M165 260 L180 286 L195 260 Z" fill="#FF0000" rel="261"></path><path d="M195 260 L180 286 L210 286 Z" fill="#008013" rel="262"></path><path d="M195 260 L210 286 L225 260 Z" fill="#008013" rel="263"></path><path d="M225 260 L210 286 L240 286 Z" fill="#008013" rel="264"></path><path d="M225 260 L240 286 L255 260 Z" fill="#008013" rel="265"></path><path d="M255 260 L240 286 L270 286 Z" fill="#008013" rel="266"></path><path d="M255 260 L270 286 L285 260 Z" fill="#008013" rel="267"></path><path d="M285 260 L270 286 L300 286 Z" fill="#008013" rel="268"></path><path d="M285 260 L300 286 L315 260 Z" fill="#008013" rel="269"></path><path d="M315 260 L300 286 L330 286 Z" fill="#323232" rel="270"></path><path d="M315 260 L330 286 L345 260 Z" fill="#323232" rel="271"></path><path d="M345 260 L330 286 L360 286 Z" fill="#323232" rel="272"></path><path d="M345 260 L360 286 L375 260 Z" fill="#323232" rel="273"></path><path d="M375 260 L360 286 L390 286 Z" fill="#323232" rel="274"></path><path d="M0 286 L15 312 L30 286 Z" fill="#323232" rel="275"></path><path d="M30 286 L15 312 L45 312 Z" fill="#323232" rel="276"></path><path d="M30 286 L45 312 L60 286 Z" fill="#323232" rel="277"></path><path d="M60 286 L45 312 L75 312 Z" fill="#323232" rel="278"></path><path d="M60 286 L75 312 L90 286 Z" fill="#323232" rel="279"></path><path d="M90 286 L75 312 L105 312 Z" fill="#323232" rel="280"></path><path d="M90 286 L105 312 L120 286 Z" fill="#FF0000" rel="281"></path><path d="M120 286 L105 312 L135 312 Z" fill="#FF0000" rel="282"></path><path d="M120 286 L135 312 L150 286 Z" fill="#FF0000" rel="283"></path><path d="M150 286 L135 312 L165 312 Z" fill="#CCCBC5" rel="284"></path><path d="M150 286 L165 312 L180 286 Z" fill="#FF0000" rel="285"></path><path d="M180 286 L165 312 L195 312 Z" fill="#FF0000" rel="286"></path><path d="M180 286 L195 312 L210 286 Z" fill="#FF0000" rel="287"></path><path d="M210 286 L195 312 L225 312 Z" fill="#CCCBC5" rel="288"></path><path d="M210 286 L225 312 L240 286 Z" fill="#008013" rel="289"></path><path d="M240 286 L225 312 L255 312 Z" fill="#008013" rel="290"></path><path d="M240 286 L255 312 L270 286 Z" fill="#008013" rel="291"></path><path d="M270 286 L255 312 L285 312 Z" fill="#008013" rel="292"></path><path d="M270 286 L285 312 L300 286 Z" fill="#008013" rel="293"></path><path d="M300 286 L285 312 L315 312 Z" fill="#323232" rel="294"></path><path d="M300 286 L315 312 L330 286 Z" fill="#323232" rel="295"></path><path d="M330 286 L315 312 L345 312 Z" fill="#323232" rel="296"></path><path d="M330 286 L345 312 L360 286 Z" fill="#323232" rel="297"></path><path d="M360 286 L345 312 L375 312 Z" fill="#323232" rel="298"></path><path d="M360 286 L375 312 L390 286 Z" fill="#323232" rel="299"></path></svg></div> <div class="toolbar"><div class="horizontal-toolbar"><svg class="toolbar-item icon"><title>Move</title> <desc>Scroll on the map without editing</desc> <use xlink:href="#icon-hand"></use></svg> <svg class="toolbar-item icon"><title>Select</title> <desc>Select an area of triangles to edit them</desc> <use xlink:href="#icon-selection"></use></svg> <svg class="toolbar-item icon active"><title>Pen</title> <desc>Fill triangles</desc> <use xlink:href="#icon-pen"></use></svg> <svg class="toolbar-item icon"><title>Eraser</title> <desc>Eraser tool to clean triangles</desc> <use xlink:href="#icon-eraser"></use></svg></div> <div class="horizontal-toolbar palette-tool"><div class="component-container"><svg class="icon"><title>Color picker</title> <desc>Pick a new color to use to draw</desc> <use xlink:href="#icon-picker"></use></svg> <span class="color-value" style="background: rgb(255, 255, 255);"></span> <div class="color-picker vc-chrome" style="display: none;"><div class="vc-chrome-saturation-wrap"><div class="vc-saturation" style="background: rgb(255, 0, 0);"><div class="vc-saturation--white"></div> <div class="vc-saturation--black"></div> <div class="vc-saturation-pointer" style="top: 1%; left: 0%;"><div class="vc-saturation-circle"></div></div></div></div> <div class="vc-chrome-body"><div class="vc-chrome-controls"><div class="vc-chrome-color-wrap"><div class="vc-chrome-active-color" style="background: rgb(255, 255, 255);"></div> <div class="vc-checkerboard" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADBJREFUOE9jfPbs2X8GPEBSUhKfNAPjqAHDIgz+//+PNx08f/4cfzoYNYCBceiHAQC5flV5JzgrxQAAAABJRU5ErkJggg==&quot;);"></div></div> <div class="vc-chrome-sliders"><div class="vc-chrome-hue-wrap"><div class="vc-hue vc-hue--horizontal"><div class="vc-hue-container"><div class="vc-hue-pointer" style="top: 0px; left: 100%;"><div class="vc-hue-picker"></div></div></div></div></div> <div class="vc-chrome-alpha-wrap"><div class="vc-alpha"><div class="vc-alpha-checkboard-wrap"><div class="vc-checkerboard" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADBJREFUOE9jfPbs2X8GPEBSUhKfNAPjqAHDIgz+//+PNx08f/4cfzoYNYCBceiHAQC5flV5JzgrxQAAAABJRU5ErkJggg==&quot;);"></div></div> <div class="vc-alpha-gradient" style="background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgb(255, 255, 255) 100%);"></div> <div class="vc-alpha-container"><div class="vc-alpha-pointer" style="left: 100%;"><div class="vc-alpha-picker"></div></div></div></div></div></div></div> <div class="vc-chrome-fields-wrap"><div class="vc-chrome-fields"><div class="vc-chrome-field"><div class="vc-editable-input"><input class="vc-input__input"> <span class="vc-input__label">hex</span> <span class="vc-input__desc"></span></div></div></div> <div class="vc-chrome-fields" style="display: none;"><div class="vc-chrome-field"><div class="vc-editable-input"><input class="vc-input__input"> <span class="vc-input__label">r</span> <span class="vc-input__desc"></span></div></div> <div class="vc-chrome-field"><div class="vc-editable-input"><input class="vc-input__input"> <span class="vc-input__label">g</span> <span class="vc-input__desc"></span></div></div> <div class="vc-chrome-field"><div class="vc-editable-input"><input class="vc-input__input"> <span class="vc-input__label">b</span> <span class="vc-input__desc"></span></div></div> <div class="vc-chrome-field"><div class="vc-editable-input"><input class="vc-input__input"> <span class="vc-input__label">a</span> <span class="vc-input__desc"></span></div></div></div> <div class="vc-chrome-fields" style="display: none;"><div class="vc-chrome-field"><div class="vc-editable-input"><input class="vc-input__input"> <span class="vc-input__label">h</span> <span class="vc-input__desc"></span></div></div> <div class="vc-chrome-field"><div class="vc-editable-input"><input class="vc-input__input"> <span class="vc-input__label">s</span> <span class="vc-input__desc"></span></div></div> <div class="vc-chrome-field"><div class="vc-editable-input"><input class="vc-input__input"> <span class="vc-input__label">l</span> <span class="vc-input__desc"></span></div></div> <div class="vc-chrome-field"><div class="vc-editable-input"><input class="vc-input__input"> <span class="vc-input__label">a</span> <span class="vc-input__desc"></span></div></div></div> <div class="vc-chrome-toggle-btn"><div class="vc-chrome-toggle-icon"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px;"><path fill="#333" d="M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z"></path></svg></div> <div class="vc-chrome-toggle-icon-highlight" style="display: none;"></div></div></div></div></div></div> <span class="toolbar-item palette"><span class="palette-color">+</span> <span class="palette-color" style="background-color: rgb(255, 0, 0);"></span><span class="palette-color" style="background-color: rgb(255, 196, 0);"></span><span class="palette-color" style="background-color: rgb(241, 221, 124);"></span><span class="palette-color" style="background-color: rgb(204, 203, 197);"></span><span class="palette-color" style="background-color: rgb(255, 249, 205);"></span><span class="palette-color" style="background-color: rgb(202, 76, 153);"></span><span class="palette-color" style="background-color: rgb(0, 208, 255);"></span><span class="palette-color" style="background-color: rgb(0, 128, 19);"></span><span class="palette-color" style="background-color: rgb(255, 255, 0);"></span><span class="palette-color" style="background-color: rgb(255, 50, 0);"></span><span class="palette-color" style="background-color: rgb(50, 50, 50);"></span><span class="palette-color" style="background-color: rgb(0, 0, 0);"></span><span class="palette-color active" style="background-color: rgb(255, 255, 255);"></span><span class="palette-color" style="background-color: rgb(255, 96, 0);"></span><span class="palette-color" style="background-color: rgb(255, 165, 0);"></span><span class="palette-color" style="background-color: rgb(255, 140, 0);"></span><span class="palette-color" style="background-color: rgb(247, 55, 24);"></span><span class="palette-color" style="background-color: rgb(226, 88, 34);"></span></span></div> <div class="horizontal-toolbar"><svg class="toolbar-item icon"><title>Undo</title> <desc>Undo the last action done on the workspace</desc> <use xlink:href="#icon-undo"></use></svg> <svg class="toolbar-item icon"><title>Fullscreen</title> <desc>Toggle the fullscreen mode</desc> <use xlink:href="#icon-fullscreen"></use></svg> <svg class="toolbar-item icon"><title>Preview</title> <desc>Show/hide the triangle grid border</desc> <use xlink:href="#icon-preview"></use></svg> <svg class="toolbar-item icon"><title>Download SVG</title> <desc>Downoad the SVG file of your creation</desc> <use xlink:href="#icon-download"></use></svg></div></div></div></span></div>
+
+  <!-- Preview trigger -->
+  <style type="text/css">
+    .playground svg.preview path {stroke: none;}
+    .playground path {stroke: currentColor;}
+  </style> 
+
+  <!-- Le symbols -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="action-import" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+        <polyline points="30,14 38,14 38,35 30,43 10,43 10,14 18,14"></polyline>
+        <polyline points="38,35 30,35 30,43"></polyline>
+        <polyline points="18,9 24,3 30,9"></polyline>
+        <line x1="24" y1="3" x2="24" y2="25"></line>
+      </g>
+    </symbol>
+
+    <symbol id="action-floppydisk" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+        <polygon points="42,42 6,42 6,6 36,6 42,12"></polygon>
+        <rect x="15" y="6" width="18" height="12"></rect>
+        <rect x="10" y="22" width="28" height="20"></rect>
+        <rect x="26" y="9" width="4" height="6"></rect>
+      </g>
+    </symbol>
+
+    <symbol id="action-add" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+        <polygon points="14,41 4,24 14,7 34,7 44,24 34,41"></polygon>
+        <line x1="17" y1="24" x2="31" y2="24"></line>
+        <line x1="24" y1="31" x2="24" y2="17"></line>
+      </g>
+    </symbol>
+
+    <symbol id="icon-github" viewBox="0 0 128 128">
+      <path fill="currentColor" d="M115.9,35.4c-5.3-9.2-12.6-16.5-21.8-21.8c-9.2-5.4-19.2-8-30.1-8c-10.9,0-20.9,2.7-30.1,8C24.7,18.9,17.4,26.2,12,35.4 c-5.3,9.2-8,19.3-8,30.1c0,13.1,3.8,24.9,11.4,35.3c7.7,10.4,17.5,17.7,29.6,21.7c1.4,0.3,2.5,0.1,3.1-0.5c0.7-0.6,1-1.4,1-2.4 v-4.2l-0.1-7l-1.8,0.3c-1.1,0.3-2.6,0.3-4.4,0.3c-1.7,0-3.6-0.2-5.4-0.5c-1.9-0.3-3.6-1.1-5.3-2.3c-1.6-1.2-2.7-2.8-3.4-4.8 L28,99.5c-0.5-1.2-1.3-2.5-2.5-4c-1.1-1.5-2.2-2.5-3.4-3l-0.5-0.4c-0.4-0.3-0.7-0.5-1-0.9c-0.3-0.4-0.5-0.7-0.7-1.1 c-0.1-0.4,0-0.7,0.4-0.9c0.4-0.3,1.2-0.4,2.2-0.4l1.6,0.3c1,0.2,2.3,0.8,3.8,1.8c1.6,1,2.8,2.4,3.8,4.1c1.2,2.1,2.6,3.7,4.3,4.8 c1.7,1.1,3.4,1.6,5.1,1.6c1.7,0,3.2-0.1,4.5-0.4c1.2-0.2,2.4-0.6,3.5-1.1c0.5-3.5,1.8-6.2,3.8-8c-3-0.3-5.6-0.8-8-1.4 c-2.4-0.7-4.8-1.6-7.3-3.1c-2.5-1.4-4.7-3.1-6.3-5.2c-1.6-2.1-3-4.8-4.1-8.2c-1.1-3.4-1.6-7.3-1.6-11.7c0-6.3,2.1-11.7,6.2-16.1 c-1.9-4.7-1.8-10,0.5-16c1.5-0.4,3.7-0.1,6.7,1.1c3,1.2,5.1,2.2,6.5,3c1.4,0.8,2.5,1.5,3.3,2.1c4.8-1.4,9.9-2,15-2 c5.1,0,10.1,0.7,15,2l3-1.9c2-1.3,4.4-2.5,7.2-3.5c2.7-1,4.9-1.4,6.3-0.8c2.4,5.9,2.6,11.2,0.7,15.9c4.1,4.5,6.2,9.9,6.2,16.1 c0,4.4-0.5,8.3-1.6,11.8c-1,3.4-2.4,6.1-4.1,8.2c-1.7,2-3.8,3.8-6.3,5.1c-2.6,1.5-5,2.5-7.4,3.1c-2.4,0.6-5,1.1-8,1.4 c2.7,2.4,4.1,6.1,4.1,11.1v16.5c0,0.9,0.3,1.7,1,2.4c0.7,0.6,1.6,0.8,3.1,0.5c12-4,21.9-11.2,29.6-21.7 c7.7-10.4,11.4-22.2,11.4-35.3C124,54.7,121.3,44.6,115.9,35.4L115.9,35.4z"></path>
+    </symbol>
+
+    <symbol id="icon-eraser" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10">
+        <line fill="none" stroke="currentColor" x1="4" y1="41" x2="25.001" y2="41"></line>
+        <path fill="currentColor" d="M18.64,8.42c1.168-1.17,3.06-1.17,4.23,0l10.59,10.62L16.51,35.99L5.92,25.37 c-1.17-1.17-1.17-3.06,0-4.23L18.64,8.42z"></path>
+        <path fill="none" stroke="currentColor" d="M44.08,29.63 c1.171,1.167,1.171,3.06,0,4.229L36.973,41H21.521l-5.011-5.01L5.92,25.37c-1.17-1.17-1.17-3.06,0-4.23L18.64,8.421 c1.168-1.17,3.06-1.17,4.23,0l10.59,10.62L44.08,29.63z"></path>
+      </g>
+    </symbol>
+
+    <symbol id="icon-hand" viewBox="0 0 48 48">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" d="
+        M37.655,9.927c-1.294,0-2.346,1.05-2.346,2.345v10.166c0,0.433-0.349,0.781-0.782,0.781c-0.431,0-0.78-0.348-0.78-0.781V7.582
+        c0-1.295-1.053-2.345-2.346-2.345c-1.298,0-2.346,1.05-2.346,2.345v13.292c0,0.43-0.35,0.782-0.781,0.782
+        c-0.433,0-0.782-0.352-0.782-0.782V6.018c0-1.295-1.052-2.345-2.346-2.345c-1.298,0-2.348,1.05-2.348,2.345v14.855
+        c0,0.43-0.349,0.782-0.781,0.782c-0.433,0-0.782-0.352-0.782-0.782V9.145c0-1.295-1.05-2.345-2.345-2.345s-2.345,1.05-2.345,2.345
+        V28.69l-3.167-4.331c-0.938-1.449-2.769-1.933-4.111-1.104c-1.336,0.849-1.668,2.701-0.742,4.141c0,0,5.106,7.728,7.284,11.037
+        c2.176,3.31,5.703,5.895,12.294,5.895C39.024,44.327,40,35.896,40,33.381c0-2.512,0-21.109,0-21.109
+        C40,10.977,38.948,9.927,37.655,9.927z"></path>
+    </symbol>
+
+    <symbol id="icon-fullscreen" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10">
+        <rect x="3" y="9" width="42" height="30"></rect>
+        <rect x="3" y="24" width="21" height="15"></rect>
+      </g>
+    </symbol>
+
+    <symbol id="icon-download" viewBox="0 0 48 48">
+      <polygon fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="42,21 33,21 33,7 15,7 15,21 6,21 24,41"></polygon>
+    </symbol>
+
+    <symbol id="icon-preview" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10">
+        <path d="M24,11 C11.849,11,2,24,2,24s9.849,13,22,13c12.15,0,22-13,22-13S36.15,11,24,11z"></path>
+        <circle cx="24" cy="24" r="9"></circle>
+      </g>
+    </symbol>
+
+    <symbol id="icon-pen" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10">
+        <polygon points="40.43,28.915 43.5,43.491 28.923,40.422 9.363,20.861 20.871,9.355"></polygon>
+        <path d="M8.971,20.487l-3.837-3.836 c-0.846-0.846-0.846-2.222,0-3.068l8.439-8.438c0.847-0.848,2.221-0.848,3.069,0l3.834,3.835"></path>
+        <polyline points="32.368,37.746 12.423,17.803 17.792,12.433 37.739,32.377   "></polyline>
+        <path d="M31.985,37.363c-1.092-1.091-2.66-1.286-3.507-0.439c-0.85,0.851-0.654,2.419,0.437,3.506"></path>
+        <path d="M40.422,28.923c-1.088-1.087-2.66-1.282-3.508-0.435c-0.846,0.846-0.65,2.414,0.441,3.506"></path>
+        <path d="M37.355,31.994c-1.273-1.274-3.505-1.1-4.987,0.383c-1.483,1.483-1.656,3.715-0.383,4.986"></path>
+        <path fill="currentColor" d="M42.068,36.695c-1.305,0.212-2.559,0.813-3.563,1.817c-0.999,1-1.601,2.247-1.815,3.544l6.811,1.435 L42.068,36.695z"></path>
+        <line x1="7.437" y1="18.953" x2="18.942" y2="7.447"></line>
+      </g>
+    </symbol>
+
+    <symbol id="icon-picker" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10">
+        <path stroke="none" fill="currentColor" d="M14.777,7.736L14.07,8.444l-3.536-3.536c-1.17-1.17-3.073-1.17-4.243,0L4.877,6.322
+        c-1.17,1.17-1.17,3.073,0,4.243l3.536,3.536l-0.708,0.707c-0.781,0.781-0.781,2.047,0,2.829l2.829,2.828
+        c0.781,0.781,2.047,0.781,2.829,0l7.071-7.071c0.781-0.781,0.781-2.047,0-2.829l-2.828-2.829
+        C16.824,6.956,15.558,6.956,14.777,7.736z"></path>
+        <line x1="35.99" y1="40.264" x2="40.232" y2="36.021"></line>
+        <path d="M43.414,41.324l-1.061-1.061c0.588-0.587,0.588-1.534,0-2.121L9.827,5.615c-0.781-0.781-2.047-0.781-2.829,0L5.584,7.029 c-0.781,0.781-0.781,2.047,0,2.829l32.527,32.527c0.586,0.587,1.533,0.587,2.121,0c0,0,1.061,1.057,1.061,1.061"></path>
+      </g>
+    </symbol>
+
+    <symbol id="icon-selection" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="3,13 3,9 7,9"></polyline>
+        <line stroke-dasharray="6.8,3.4" x1="10.4" y1="9" x2="39.3" y2="9"></line>
+        <polyline points="41,9 45,9 45,13"></polyline>
+        <line stroke-dasharray="6.2857,3.1429" x1="45" y1="16.143" x2="45" y2="33.429"></line>
+        <polyline points="45,35 45,39 41,39"></polyline>
+        <line stroke-dasharray="6.8,3.4" x1="37.6" y1="39" x2="8.7" y2="39"></line>
+        <polyline points="7,39 3,39 3,35"></polyline>
+        <line stroke-dasharray="6.2857,3.1429" x1="3" y1="31.857" x2="3" y2="14.571"></line>
+      </g>
+    </symbol>
+
+    <symbol id="icon-undo" viewBox="0 0 48 48">
+      <g stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path fill="none" d="M10,24 c0-8.836,7.164-16,16-16s16,7.164,16,16s-7.164,16-16,16"></path>
+        <polygon fill="currentColor" points="16,24 10,30 4,24"></polygon>
+      </g>
+    </symbol>
+
+    <symbol id="icon-maxwellito" viewBox="0 0 120 122">
+      <polyline fill="currentColor" points="30,0 60,17.33 40,28.88 60,40.43 80,28.88 60,17.33 90,0 120,17.33 120,51.98 90,69.29 90,46.20 70,57.75 70,80.84 90,69.29 90,103.93 60,121.26 30,103.93 30,69.29 50,80.84 50,57.75 30,46.2 30,69.29 0,51.98 0,17.33"></polyline>
+    </symbol>
+  </svg><div style="position: static !important;"></div>
+
+  <!-- Le script -->
+  <script src="./dino_fire_0_files/build.js.download"></script><a style="display: none;" href="blob:https://maxwellito.github.io/f1a5fbd4-f629-426b-ba20-7464937a26b7" download="artwork.svg"></a>
+  <script>
+    // Set up service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js', {scope: '.'});
+    }
+  </script>
+
+
+
+<div id="i_b_bsin" style="color: initial; font: initial; font-feature-settings: initial; font-kerning: initial; font-optical-sizing: initial; font-palette: initial; font-synthesis: initial; font-variation-settings: initial; forced-color-adjust: initial; text-orientation: initial; text-rendering: initial; -webkit-font-smoothing: initial; -webkit-locale: initial; -webkit-text-orientation: initial; -webkit-writing-mode: initial; writing-mode: initial; zoom: initial; accent-color: initial; place-content: initial; place-items: initial; place-self: initial; alignment-baseline: initial; animation: initial; app-region: initial; appearance: initial; aspect-ratio: initial; backdrop-filter: initial; backface-visibility: initial; background: initial; background-blend-mode: initial; baseline-shift: initial; block-size: initial; border-block: initial; border: initial; border-radius: initial; border-collapse: initial; border-end-end-radius: initial; border-end-start-radius: initial; border-inline: initial; border-start-end-radius: initial; border-start-start-radius: initial; inset: initial; box-shadow: initial; box-sizing: initial; break-after: initial; break-before: initial; break-inside: initial; buffered-rendering: initial; caption-side: initial; caret-color: initial; clear: initial; clip: initial; clip-path: initial; clip-rule: initial; color-interpolation: initial; color-interpolation-filters: initial; color-rendering: initial; color-scheme: initial; columns: initial; column-fill: initial; gap: initial; column-rule: initial; column-span: initial; contain: initial; contain-intrinsic-block-size: initial; contain-intrinsic-size: initial; contain-intrinsic-inline-size: initial; container: initial; content: initial; content-visibility: initial; counter-increment: initial; counter-reset: initial; counter-set: initial; cursor: initial; cx: initial; cy: initial; d: initial; display: initial; dominant-baseline: initial; empty-cells: initial; fill: initial; fill-opacity: initial; fill-rule: initial; filter: initial; flex: initial; flex-flow: initial; float: initial; flood-color: initial; flood-opacity: initial; grid: initial; grid-area: initial; height: initial; hyphens: initial; image-orientation: initial; image-rendering: initial; inline-size: initial; inset-block: initial; inset-inline: initial; isolation: initial; letter-spacing: initial; lighting-color: initial; line-break: initial; list-style: initial; margin-block: initial; margin: initial; margin-inline: initial; marker: initial; mask: initial; mask-type: initial; max-block-size: initial; max-height: initial; max-inline-size: initial; max-width: initial; min-block-size: initial; min-height: initial; min-inline-size: initial; min-width: initial; mix-blend-mode: initial; object-fit: initial; object-position: initial; object-view-box: initial; offset: initial; opacity: initial; order: initial; origin-trial-test-property: initial; orphans: initial; outline: initial; outline-offset: initial; overflow-anchor: initial; overflow-clip-margin: initial; overflow-wrap: initial; overflow: initial; overscroll-behavior-block: initial; overscroll-behavior-inline: initial; overscroll-behavior: initial; padding-block: initial; padding: initial; padding-inline: initial; page: initial; page-orientation: initial; page-transition-tag: initial; paint-order: initial; perspective: initial; perspective-origin: initial; pointer-events: initial; position: relative; quotes: initial; r: initial; resize: initial; rotate: initial; ruby-position: initial; rx: initial; ry: initial; scale: initial; scroll-behavior: initial; scroll-margin-block: initial; scroll-margin: initial; scroll-margin-inline: initial; scroll-padding-block: initial; scroll-padding: initial; scroll-padding-inline: initial; scroll-snap-align: initial; scroll-snap-stop: initial; scroll-snap-type: initial; scrollbar-gutter: initial; shape-image-threshold: initial; shape-margin: initial; shape-outside: initial; shape-rendering: initial; size: initial; speak: initial; stop-color: initial; stop-opacity: initial; stroke: initial; stroke-dasharray: initial; stroke-dashoffset: initial; stroke-linecap: initial; stroke-linejoin: initial; stroke-miterlimit: initial; stroke-opacity: initial; stroke-width: initial; tab-size: initial; table-layout: initial; text-align: initial; text-align-last: initial; text-anchor: initial; text-combine-upright: initial; text-decoration: initial; text-decoration-skip-ink: initial; text-emphasis: initial; text-emphasis-position: initial; text-indent: initial; text-overflow: initial; text-shadow: initial; text-size-adjust: initial; text-transform: initial; text-underline-offset: initial; text-underline-position: initial; touch-action: initial; transform: initial; transform-box: initial; transform-origin: initial; transform-style: initial; transition: initial; translate: initial; user-select: initial; vector-effect: initial; vertical-align: initial; visibility: initial; border-spacing: initial; -webkit-box-align: initial; -webkit-box-decoration-break: initial; -webkit-box-direction: initial; -webkit-box-flex: initial; -webkit-box-ordinal-group: initial; -webkit-box-orient: initial; -webkit-box-pack: initial; -webkit-box-reflect: initial; -webkit-highlight: initial; -webkit-hyphenate-character: initial; -webkit-line-break: initial; -webkit-line-clamp: initial; -webkit-mask-box-image: initial; -webkit-mask: initial; -webkit-mask-composite: initial; -webkit-print-color-adjust: initial; -webkit-rtl-ordering: initial; -webkit-ruby-position: initial; -webkit-tap-highlight-color: initial; -webkit-text-combine: initial; -webkit-text-decorations-in-effect: initial; -webkit-text-fill-color: initial; -webkit-text-security: initial; -webkit-text-stroke: initial; -webkit-user-drag: initial; -webkit-user-modify: initial; white-space: initial; widows: initial; width: initial; will-change: initial; word-break: initial; word-spacing: initial; x: initial; y: initial; z-index: 2147483647;"><style type="text/css">16580@font-face{font-family:"Roboto";src:url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-100.woff) format("woff"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-100.woff2) format("woff2"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-100.ttf) format("truetype");font-style:normal;font-weight:100;font-display:swap}@font-face{font-family:"Roboto";src:url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-300.woff) format("woff"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-300.woff2) format("woff2"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-300.ttf) format("truetype");font-style:normal;font-weight:300;font-display:swap}@font-face{font-family:"Roboto";src:url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-400.woff) format("woff"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-400.woff2) format("woff2"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-400.ttf) format("truetype");font-style:normal;font-weight:400;font-display:swap}@font-face{font-family:"Roboto";src:url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-500.woff) format("woff"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-500.woff2) format("woff2"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-500.ttf) format("truetype");font-style:normal;font-weight:500;font-display:swap}@font-face{font-family:"Roboto";src:url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-700.woff) format("woff"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-700.woff2) format("woff2"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-700.ttf) format("truetype");font-style:normal;font-weight:700;font-display:swap}@font-face{font-family:"Roboto";src:url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-900.woff) format("woff"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-900.woff2) format("woff2"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Roboto/roboto-900.ttf) format("truetype");font-style:normal;font-weight:900;font-display:swap}@font-face{font-family:"Rebond";src:url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Rebond/rebond-400.woff) format("woff"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Rebond/rebond-400.woff2) format("woff2"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Rebond/rebond-400.ttf) format("truetype");font-style:normal;font-weight:400;font-display:swap}@font-face{font-family:"Rebond";src:url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Rebond/rebond-500.woff) format("woff"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Rebond/rebond-500.woff2) format("woff2"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Rebond/rebond-500.ttf) format("truetype");font-style:normal;font-weight:500;font-display:swap}@font-face{font-family:"Rebond";src:url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Rebond/rebond-600.woff) format("woff"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Rebond/rebond-600.woff2) format("woff2"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Rebond/rebond-600.ttf) format("truetype");font-style:normal;font-weight:600;font-display:swap}@font-face{font-family:"Rebond";src:url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Rebond/rebond-700.woff) format("woff"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Rebond/rebond-700.woff2) format("woff2"),url(chrome-extension://emalgedpdlghbkikiaeocoblajamonoh/fonts/Rebond/rebond-700.ttf) format("truetype");font-style:normal;font-weight:700;font-display:swap}</style><style type="text/css">#i_b_bsin div:empty {
+          display: block !important;
+        }86660#__wikibuy__ .__wikibuy.__onTop,body~div:not(#gdx-bubble-host),#piggyWrapper,#honeyContainer,#earny-root{position:absolute !important;z-index:100000 !important}body[data-shop-url="https://www.honeybum.com"] header>.header{z-index:99999}.mm-slideout{z-index:initial}.sorry-for-this__empty-styles{position:relative;z-index:10000}</style><div style="all: initial;"></div></div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><div></div></html>
