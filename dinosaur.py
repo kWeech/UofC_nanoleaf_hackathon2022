@@ -243,4 +243,5 @@ if __name__ == "__main__":
                 frames5.append(frame)
                 panel_id += 1
             iterate_row += 1
+        sendStreamControlFrames(frames5, ips[rownum])
         time.sleep(1.5)

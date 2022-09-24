@@ -119,38 +119,13 @@ if __name__ == "__main__":
     panel_ids.pop(10)
     panel_ids.insert(10, nine_row)
     panel_ids.insert(11, ten_row)
-    #print(panel_ids)
+    # print(panel_ids)
 
     panel_id_dict = {}
 
     for i in range(12):
         panel_id_dict[i] = panel_ids[i]
 
-<<<<<<< HEAD
-    rownum = 0
-    panel_id = 0
-    iterate_row = 0
-    for index, panel in FinalTable.iterrows():
-        if (iterate_row == 23):
-            #sendStreamControlFrames(frames5, ips[rownum])
-            #print(frames5, '\n', "SIZE:", len(frames5), '\n')
-            frames5 = []
-            rownum += 1
-            iterate_row = 0
-            panel_id = 0
-
-        if (panel['R'] == 50 & panel['G'] == 50 & panel['B'] == 50):
-            #print({'panelId': panel_id_dict[rownum][panel_id]})
-            pass
-        else:
-            frame = {'panelId': panel_id_dict[rownum][panel_id],
-                     'R': panel['R'], 'G': panel['G'], 'B': panel['B'], 'T': 1}  
-            #print(frame)
-            frames5.append(frame)
-            panel_id += 1
-        iterate_row += 1
-    #print(frames5)
-=======
     # Isaiah's code:
     # Getting all files from folder
     # directory name
@@ -167,9 +142,8 @@ if __name__ == "__main__":
             r"fill\=\"(?P<Colour>[\#[0-9a-zA-Z]*)\" rel\=\"(?P<Number>[0-9]+)")
         matchiter = extract_script.finditer(my_file_info)
         for match in matchiter:
-            # print(match.groupdict())
+            print(match.groupdict())
             html_info = html_info.append(match.groupdict(), ignore_index=True)
->>>>>>> 6d58e801a8f544df4f7e89c1f809500a0cad1978
 
         FinalTable = pd.DataFrame()
         FinalTable = pd.concat([FinalTable, html_info.apply(
@@ -181,7 +155,7 @@ if __name__ == "__main__":
         rownum = 0
         panel_id = 0
         iterate_row = 0
-        print(FinalTable.head(25))
+
         for index, panel in FinalTable.iterrows():
             if (iterate_row == 25):
                 #sendStreamControlFrames(frames5, ips[rownum])
@@ -200,5 +174,6 @@ if __name__ == "__main__":
                 frames5.append(frame)
                 panel_id += 1
             iterate_row += 1
+        print(frames5, '\n', "SIZE:", len(frames5), '\n')
         # print(frames5)
         # print(len(frames5))
