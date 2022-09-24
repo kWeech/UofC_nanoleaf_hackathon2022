@@ -1,23 +1,4 @@
-"""
-Written by: Tysy and Kenny NOT KIM
 
-Description:
-    Written to display "ZETTA" and spellout zetta on u of c brand color background on a hexagon display, created with 216
-    nanoleaf light panels.
-    
-    Each row in the display has a dedicated controller except 1st two rows and last two rows. Total there are 12 rows and 10 controllers.
-    
-    This code is extended from the Demo script of basic OpenAPI functionality for interacting with Nanoleaf Light Panels.
-    Which Included:
-    - Retrieving authentication token
-    - Getting device data including orientation, panelIds, and positions of all panels
-    - Activation of stream control mode
-    - Building and sending of stream control frames
-
-    Comments are to help parse the code, and simplify understanding
-    
-Nanoleaf Devices OpenAPI Documentation: https://forum.nanoleaf.me/docs (requires registering for a developer account)
-"""
 
 import sys
 import socket  # Used to stream data to the devices when in streaming mode, in DGRAM mode to facilitate communication to a udp socket
@@ -32,6 +13,7 @@ from webbrowser import GenericBrowser
 # possible functionality of this function!
 
 if __name__ == "__main__":
+    
     ips = ["192.168.1.14", "192.168.1.13", "192.168.1.12", "192.168.1.10", "192.168.1.11",
            "192.168.1.9", "192.168.1.4", "192.168.1.5", "192.168.1.3", "192.168.1.2"]
     frames5 = []
@@ -42,7 +24,7 @@ if __name__ == "__main__":
     frames5 = []
     html_info = pd.DataFrame()
     file = codecs.open(
-        '/Users/Isaiah/Desktop/triangulart2.html', "r", "utf-8")
+        'triangulart2.html', "r", "utf-8")
     my_file_info = file.read()
     extract_script = re.compile(
         r"fill\=\"(?P<Colour>[\#[0-9a-zA-Z]*)\" rel\=\"(?P<Number>[0-9]+)")
