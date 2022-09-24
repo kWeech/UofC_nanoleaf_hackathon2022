@@ -129,6 +129,7 @@ if __name__ == "__main__":
     auths =  ['4xjvV9IJAQDq83SFaROVVzvble3vHwV8', 'LlBI3Odz7EOHR3v5TPwh4fDbGrFuKSq7', 'WKiepsgP7vhnfI4zGBmxVH26Rq6KNFgg', '28vOnfDhQZXeShXjGKWocxHZJUe9NCwn', 'vioLVKiV1IgfsAA94JFFBTFy0vEUG48K', 'UY3DEDumg19xCnwrNV4Btm2FPF0CAhdO', '0AJgQMml89aa12iAYpAqEoWKrKW18JZa', '5EpekYkcVupgIjXM37bRsNG0pE38NfGC', 'cSTCTsuAgBRC7i8F3ug1cc1Z1smDyPQH', 'kAbYywuZWBWsMrFsOluxbnqAXEQqyMKr']
     ip5 = "192.168.1.2"
     auth5 = "s0M4TKH8BhTxdSIReRuAJzAHTYkHTdWU"
+
     data0 = json.loads(getDeviceData(ips[0], auths[0]))
     data1 = json.loads(getDeviceData(ips[1], auths[1]))
     data2 = json.loads(getDeviceData(ips[2], auths[2]))
@@ -138,7 +139,15 @@ if __name__ == "__main__":
     data6 = json.loads(getDeviceData(ips[6], auths[6]))
     data7 = json.loads(getDeviceData(ips[7], auths[7]))
     data8 = json.loads(getDeviceData(ips[8], auths[8]))
+    data9 = json.loads(getDeviceData(ips[9], auths[9]))
 
+    data = [data0, data1, data2, data3, data4, data5, data6, data7, data8, data9]
+    position_data_dict = {}
+
+    for i in range(10):
+        position_data_dict[i] = data[i]['panelLayout']['layout']['positionData']
+    
+    print(position_data_dict[1])
     positionData5 = data5['panelLayout']['layout']['positionData']
     setStreamControlMode(ip5, auth5, 1)
     frames5 = []
@@ -147,7 +156,8 @@ if __name__ == "__main__":
     for panel in positionData5:
         R = 19
         G = 50
-        B = 55
+        B = 255
         frame5 = [{'panelId': panel['panelId'], 'R': R, 'G': G, 'B': B, 'T': T}]
+        #print(panel['panelId'])
 
         sendStreamControlFrames(frame5, ip5)
