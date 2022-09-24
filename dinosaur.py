@@ -113,7 +113,7 @@ if __name__ == "__main__":
         r"fill\=\"(?P<Colour>[\#[0-9a-zA-Z]*)\" rel\=\"(?P<Number>[0-9]+)")
     matchiter = extract_script.finditer(my_file_info)
     for match in matchiter:
-        print(match.groupdict())
+        #print(match.groupdict())
         html_info = html_info.append(match.groupdict(), ignore_index=True)
 
     def hex_to_rgb(row):
@@ -129,7 +129,7 @@ if __name__ == "__main__":
         hex_to_rgb, axis=1)])
     FinalTable = FinalTable.rename(columns={0: "Id", 1: "R", 2: "G", 3: "B"})
     # FinalTable = FinalTable.astype(int)
-    print(FinalTable.iloc[:20])
+    #print(FinalTable.iloc[:20])
 
     #Setting up controllers
     data0 = json.loads(getDeviceData(ips[0], auths[0]))
@@ -198,7 +198,6 @@ if __name__ == "__main__":
 
     #For loop iterating through panelId dict and color table
     rownum = 0
-    panel_id_dict = {}
     panel_id = 0
     iterate_row = 0
     for index, panel in FinalTable.iterrows():

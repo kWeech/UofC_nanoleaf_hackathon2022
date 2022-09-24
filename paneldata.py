@@ -90,7 +90,7 @@ for i in range(12):
 
 #print(panel_id_dict[0][0:14])
 
-print(panel_id_dict)
+#print(panel_id_dict)
 #print(panel_id_dict[0][4])
         
 
