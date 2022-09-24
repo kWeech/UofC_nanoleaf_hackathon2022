@@ -199,6 +199,8 @@ if __name__ == "__main__":
         'image_files/dino_standing.html',
         'image_files/dino_roar.html',
         'image_files/dino_standing.html',
+        'image_files/dino_roar.html',
+        'image_files/dino_standing.html',
         'image_files/dino_mouth_open.html',
         'image_files/dino_fire_0.html',
         'image_files/dino_fire_1.html',
