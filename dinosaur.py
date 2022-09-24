@@ -9,18 +9,21 @@ import sys
 import socket  # Used to stream data to the devices when in streaming mode, in DGRAM mode to facilitate communication to a udp socket
 import json  # Used to convert dictionaries to jsons and vice versa, device data is stored in a json
 import time
-import http.client as httplib  # Used for communication with the devices, changing modes and such
+# Used for communication with the devices, changing modes and such
+import http.client as httplib
 import random
 import numpy as np
 import codecs
 import re
 import pandas as pd
+import os
 
 API_PORT = "16021"
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # send is used heavily in the other functions to send the API commands needed. Read the nanoleaf open API documentation to get all of the
 # possible functionality of this function!
+
 
 def send(verb, endpoint, body, ip):
     '''
@@ -30,12 +33,14 @@ def send(verb, endpoint, body, ip):
     try:
         conn = httplib.HTTPConnection(LISTENER)
         if len(body) != 0:
-            conn.request(verb, endpoint, body, {"Content-Type": "application/json"})
+            conn.request(verb, endpoint, body, {
+                         "Content-Type": "application/json"})
         else:
             conn.request(verb, endpoint)
         response = conn.getresponse()
         body = response.read()
-        return response.status, response.reason, body  # status is equivalent to the 200 phrase in the api docs,
+        # status is equivalent to the 200 phrase in the api docs,
+        return response.status, response.reason, body
         # reason is the text next to the number (OK, No Content, etc.) body, as defined in the line above is found using
         # the .read() method, and returns the response body as defined in the api docs.
     except (httplib.HTTPException, socket.error) as ex:
@@ -43,6 +48,8 @@ def send(verb, endpoint, body, ip):
 
 # these next few functions are specified commands from the open API, the "section" referred to in the docstring is
 # the section of the open API that this command is in.
+
+
 def getDeviceData(ip, auth):
     '''
     Gets all panel info from the Nanoleaf device, returns in the format of the API JSON in the documentation
@@ -68,12 +75,15 @@ def setStreamControlMode(ip, auth, version):
     ext_control_version = "v" + str(version)
     ext_control_command = {
         'write': {'command': 'display', 'animType': 'extControl', 'extControlVersion': ext_control_version}}
-    status, __, __ = send("PUT", end_point, json.dumps(ext_control_command), ip)  # json.dumps() changes the dict to
+    status, __, __ = send("PUT", end_point, json.dumps(
+        ext_control_command), ip)  # json.dumps() changes the dict to
     # json format to be used by the devices
     if not (status == 200 or status == 204):
         print("could not connect: " + str(status))
 
 # This function is how the panel data is sent to the controllers, if you
+
+
 def sendStreamControlFrames(frames, ip):
     '''
     frames: An array of frames, with each frame consisting of a dictionary with the panelId and the color
@@ -87,23 +97,35 @@ def sendStreamControlFrames(frames, ip):
     # this number can be found by returning the body in the setStreamControlMode function
     port = 60221
     for frame in frames:
-        stream.append(frame['panelId'] & 0xFF)  
+        stream.append(frame['panelId'] & 0xFF)
         # This & 0xFF term makes is so only the last 8 bytes are used,
         # not sure if it is necessary here but it doesn't hurt
         stream.append(1 & 0xFF)
         stream.append(frame['R'] & 0xFF)
         stream.append(frame['G'] & 0xFF)
         stream.append(frame['B'] & 0xFF)
-        stream.append(0 & 0xFF)  # White channel is automatically controlled, no need to set it
+        # White channel is automatically controlled, no need to set it
+        stream.append(0 & 0xFF)
         stream.append(frame['T'] & 0xFF)
     sock.sendto(stream, (ip, port))
 
 
+def hex_to_rgb(row):
+    colour = row['Colour'].lstrip('#')
+    rgb = []
+    for i in (0, 2, 4):
+        decimal = int(colour[i:i+2], 16)
+        rgb.append(decimal)
+    return pd.Series([row['Number'], rgb[0], rgb[1], rgb[2]])
+
+
 if __name__ == "__main__":
-    ips = ["192.168.1.14", "192.168.1.13", "192.168.1.12", "192.168.1.10", "192.168.1.11", "192.168.1.9", "192.168.1.4", "192.168.1.5", "192.168.1.3", "192.168.1.2"]
-    auths =  ['4xjvV9IJAQDq83SFaROVVzvble3vHwV8', 'LlBI3Odz7EOHR3v5TPwh4fDbGrFuKSq7', 'WKiepsgP7vhnfI4zGBmxVH26Rq6KNFgg', '28vOnfDhQZXeShXjGKWocxHZJUe9NCwn', 'vioLVKiV1IgfsAA94JFFBTFy0vEUG48K', 'UY3DEDumg19xCnwrNV4Btm2FPF0CAhdO', '0AJgQMml89aa12iAYpAqEoWKrKW18JZa', '5EpekYkcVupgIjXM37bRsNG0pE38NfGC', 'cSTCTsuAgBRC7i8F3ug1cc1Z1smDyPQH', 'kAbYywuZWBWsMrFsOluxbnqAXEQqyMKr']
-    
-    #Setting up controllers
+    ips = ["192.168.1.14", "192.168.1.13", "192.168.1.12", "192.168.1.10", "192.168.1.11",
+           "192.168.1.9", "192.168.1.4", "192.168.1.5", "192.168.1.3", "192.168.1.2"]
+    auths = ['4xjvV9IJAQDq83SFaROVVzvble3vHwV8', 'LlBI3Odz7EOHR3v5TPwh4fDbGrFuKSq7', 'WKiepsgP7vhnfI4zGBmxVH26Rq6KNFgg', '28vOnfDhQZXeShXjGKWocxHZJUe9NCwn', 'vioLVKiV1IgfsAA94JFFBTFy0vEUG48K',
+             'UY3DEDumg19xCnwrNV4Btm2FPF0CAhdO', '0AJgQMml89aa12iAYpAqEoWKrKW18JZa', '5EpekYkcVupgIjXM37bRsNG0pE38NfGC', 'cSTCTsuAgBRC7i8F3ug1cc1Z1smDyPQH', 'kAbYywuZWBWsMrFsOluxbnqAXEQqyMKr']
+
+    # Setting up controllers
     data0 = json.loads(getDeviceData(ips[0], auths[0]))
     data1 = json.loads(getDeviceData(ips[1], auths[1]))
     data2 = json.loads(getDeviceData(ips[2], auths[2]))
@@ -126,96 +148,98 @@ if __name__ == "__main__":
     setStreamControlMode(ips[8], auths[8], 1)
     setStreamControlMode(ips[9], auths[9], 1)
 
-    data = [data0, data1, data2, data3, data4, data5, data6, data7, data8, data9]
+    data = [data0, data1, data2, data3, data4,
+            data5, data6, data7, data8, data9]
     position_data_dict = {}
 
-    #Creates dictionary that has each row as key and json position data as values
+    # Creates dictionary that has each row as key and json position data as values
     for i in range(10):
         position_data_dict[i] = data[i]['panelLayout']['layout']['positionData']
 
-    #Creates a list of lists that contain the panelIds
+    # Creates a list of lists that contain the panelIds
     panel_ids = []
     for i in position_data_dict:
         panel_ids.append([])
-        #print(dictionary_data[i])
+        # print(dictionary_data[i])
         for j in position_data_dict[i]:
-            #print(j['panelId'])
+            # print(j['panelId'])
             panel_ids[i].append(j['panelId'])
-    
-    #Split up first controller into two rows
+
+    # Split up first controller into two rows
     first_row = panel_ids[0][0:14]
     first_row.append(panel_ids[0][27])
     zero_row = panel_ids[0][14:27]
 
-    #Insert new list
+    # Insert new list
     panel_ids.pop(0)
     panel_ids.insert(0, first_row)
-    panel_ids.insert(0,zero_row)
+    panel_ids.insert(0, zero_row)
 
-    nine_row = panel_ids[10][0:14] 
+    nine_row = panel_ids[10][0:14]
     nine_row.append(panel_ids[10][27])
 
     ten_row = panel_ids[10][14:27]
-    #print(ten_row)
+    # print(ten_row)
 
-    #Add new list of lists for last two rows
+    # Add new list of lists for last two rows
     panel_ids.pop(10)
     panel_ids.insert(10, nine_row)
     panel_ids.insert(11, ten_row)
 
-    #Creates a new dictionary that contains only the row and panel Ids
+    # Creates a new dictionary that contains only the row and panel Ids
     panel_id_dict = {}
     for i in range(12):
         panel_id_dict[i] = panel_ids[i]
 
-    #Isaiah's code:
-    frames5 = []
-    html_info = pd.DataFrame()
-    file = codecs.open(
-        'triangulart2.html', "r", "utf-8")
-    my_file_info = file.read()
-    extract_script = re.compile(
-        r"fill\=\"(?P<Colour>[\#[0-9a-zA-Z]*)\" rel\=\"(?P<Number>[0-9]+)")
-    matchiter = extract_script.finditer(my_file_info)
-    for match in matchiter:
-        #print(match.groupdict())
-        html_info = html_info.append(match.groupdict(), ignore_index=True)
+    # Isaiah's code:
+     # Isaiah's code:
+    # Getting all files from folder
 
-    def hex_to_rgb(row):
-        colour = row['Colour'].lstrip('#')
-        rgb = []
-        for i in (0, 2, 4):
-            decimal = int(colour[i:i+2], 16)
-            rgb.append(decimal)
-        return pd.Series([row['Number'], rgb[0], rgb[1], rgb[2]])
+    # directory name
+    file_list = []
+    for file in os.scandir('image_files'):
+        if file.path.endswith('.html'):
+            file_list = file_list + [file.path]
 
-    FinalTable = pd.DataFrame()
-    FinalTable = pd.concat([FinalTable, html_info.apply(
-        hex_to_rgb, axis=1)])
-    FinalTable = FinalTable.rename(columns={0: "Id", 1: "R", 2: "G", 3: "B"})
-    # FinalTable = FinalTable.astype(int)
-    #print(FinalTable.iloc[:20])
+    for curr_file in file_list:
+        html_info = pd.DataFrame()
+        file = codecs.open(curr_file, "r", "utf-8")
+        my_file_info = file.read()
+        extract_script = re.compile(
+            r"fill\=\"(?P<Colour>[\#[0-9a-zA-Z]*)\" rel\=\"(?P<Number>[0-9]+)")
+        matchiter = extract_script.finditer(my_file_info)
+        for match in matchiter:
+            # print(match.groupdict())
+            html_info = html_info.append(match.groupdict(), ignore_index=True)
 
-    ips = ["192.168.1.14", "192.168.1.14", "192.168.1.13", "192.168.1.12", "192.168.1.10", "192.168.1.11", "192.168.1.9", "192.168.1.4", "192.168.1.5", "192.168.1.3", "192.168.1.2", "192.168.1.2"]
-    #For loop iterating through panelId dict and color table
-    rownum = 0
-    panel_id = 0
-    iterate_row = 0
-    for index, panel in FinalTable.iterrows():
-        if (iterate_row == 23):
-            sendStreamControlFrames(frames5, ips[rownum])
-            frames5 = []
-            rownum += 1
-            iterate_row = 0
-            panel_id = 0
+        FinalTable = pd.DataFrame()
+        FinalTable = pd.concat([FinalTable, html_info.apply(
+            hex_to_rgb, axis=1)])
+        FinalTable = FinalTable.rename(
+            columns={0: "Id", 1: "R", 2: "G", 3: "B"})
+        # FinalTable = FinalTable.astype(int)
+        # print(FinalTable.iloc[:20])
 
-        if (panel['R'] == 50 & panel['G'] == 50 & panel['B'] == 50):
-            pass
-        else:
-            frame = {'panelId': panel_id_dict[rownum][panel_id],
-                     'R': panel['R'], 'G': panel['G'], 'B': panel['B'], 'T': 1}
-            frames5.append(frame)
-            panel_id += 1
-        iterate_row += 1
+        ips = ["192.168.1.14", "192.168.1.14", "192.168.1.13", "192.168.1.12", "192.168.1.10", "192.168.1.11",
+               "192.168.1.9", "192.168.1.4", "192.168.1.5", "192.168.1.3", "192.168.1.2", "192.168.1.2"]
+        # For loop iterating through panelId dict and color table
+        frames5 = []
+        rownum = 0
+        panel_id = 0
+        iterate_row = 0
+        for index, panel in FinalTable.iterrows():
+            if (iterate_row == 23):
+                sendStreamControlFrames(frames5, ips[rownum])
+                frames5 = []
+                rownum += 1
+                iterate_row = 0
+                panel_id = 0
 
-    
+            if (panel['R'] == 50 & panel['G'] == 50 & panel['B'] == 50):
+                pass
+            else:
+                frame = {'panelId': panel_id_dict[rownum][panel_id],
+                         'R': panel['R'], 'G': panel['G'], 'B': panel['B'], 'T': 1}
+                frames5.append(frame)
+                panel_id += 1
+            iterate_row += 1
