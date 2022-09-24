@@ -144,10 +144,11 @@ if __name__ == "__main__":
     data = [data0, data1, data2, data3, data4, data5, data6, data7, data8, data9]
     position_data_dict = {}
 
+    #Creates dictionary that has each row as key and json position data as values
     for i in range(10):
         position_data_dict[i] = data[i]['panelLayout']['layout']['positionData']
     
-    print(position_data_dict[1])
+    print(position_data_dict[5][1]['panelId'])
     positionData5 = data5['panelLayout']['layout']['positionData']
     setStreamControlMode(ip5, auth5, 1)
     frames5 = []
