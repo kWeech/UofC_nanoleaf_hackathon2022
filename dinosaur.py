@@ -173,7 +173,7 @@ if __name__ == "__main__":
     # Insert new list
     panel_ids.pop(0)
     panel_ids.insert(0, first_row)
-    panel_ids.insert(0, zero_row)
+    panel_ids.insert(0, zero_row[::-1])
 
     nine_row = panel_ids[10][0:14]
     nine_row.append(panel_ids[10][27])
@@ -184,7 +184,7 @@ if __name__ == "__main__":
     # Add new list of lists for last two rows
     panel_ids.pop(10)
     panel_ids.insert(10, nine_row)
-    panel_ids.insert(11, ten_row)
+    panel_ids.insert(11, ten_row[::-1])
 
     # Creates a new dictionary that contains only the row and panel Ids
     panel_id_dict = {}
