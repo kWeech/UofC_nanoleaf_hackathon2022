@@ -114,7 +114,8 @@ if __name__ == "__main__":
     panel_ids.pop(10)
     panel_ids.insert(10, nine_row)
     panel_ids.insert(10, ten_row)
-
+    print(panel_ids)
+    
     panel_id_dict = {}
 
     for i in range(12):
@@ -126,6 +127,7 @@ if __name__ == "__main__":
     for index, panel in FinalTable.iterrows():
         if (iterate_row == 23):
             #sendStreamControlFrames(frames5, ips[rownum])
+            frames5 = []
             rownum += 1
             iterate_row = 0
             panel_id = 0
@@ -140,6 +142,6 @@ if __name__ == "__main__":
             panel_id += 1
         iterate_row += 1
     #print(frames5)
-    print(len(frames5))
+    #print(len(frames5))
 
     

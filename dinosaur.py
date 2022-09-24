@@ -103,34 +103,6 @@ if __name__ == "__main__":
     ips = ["192.168.1.14", "192.168.1.13", "192.168.1.12", "192.168.1.10", "192.168.1.11", "192.168.1.9", "192.168.1.4", "192.168.1.5", "192.168.1.3", "192.168.1.2"]
     auths =  ['4xjvV9IJAQDq83SFaROVVzvble3vHwV8', 'LlBI3Odz7EOHR3v5TPwh4fDbGrFuKSq7', 'WKiepsgP7vhnfI4zGBmxVH26Rq6KNFgg', '28vOnfDhQZXeShXjGKWocxHZJUe9NCwn', 'vioLVKiV1IgfsAA94JFFBTFy0vEUG48K', 'UY3DEDumg19xCnwrNV4Btm2FPF0CAhdO', '0AJgQMml89aa12iAYpAqEoWKrKW18JZa', '5EpekYkcVupgIjXM37bRsNG0pE38NfGC', 'cSTCTsuAgBRC7i8F3ug1cc1Z1smDyPQH', 'kAbYywuZWBWsMrFsOluxbnqAXEQqyMKr']
     
-    #Isaiah's code:
-    frames5 = []
-    html_info = pd.DataFrame()
-    file = codecs.open(
-        'triangulart2.html', "r", "utf-8")
-    my_file_info = file.read()
-    extract_script = re.compile(
-        r"fill\=\"(?P<Colour>[\#[0-9a-zA-Z]*)\" rel\=\"(?P<Number>[0-9]+)")
-    matchiter = extract_script.finditer(my_file_info)
-    for match in matchiter:
-        #print(match.groupdict())
-        html_info = html_info.append(match.groupdict(), ignore_index=True)
-
-    def hex_to_rgb(row):
-        colour = row['Colour'].lstrip('#')
-        rgb = []
-        for i in (0, 2, 4):
-            decimal = int(colour[i:i+2], 16)
-            rgb.append(decimal)
-        return pd.Series([row['Number'], rgb[0], rgb[1], rgb[2]])
-
-    FinalTable = pd.DataFrame()
-    FinalTable = pd.concat([FinalTable, html_info.apply(
-        hex_to_rgb, axis=1)])
-    FinalTable = FinalTable.rename(columns={0: "Id", 1: "R", 2: "G", 3: "B"})
-    # FinalTable = FinalTable.astype(int)
-    #print(FinalTable.iloc[:20])
-
     #Setting up controllers
     data0 = json.loads(getDeviceData(ips[0], auths[0]))
     data1 = json.loads(getDeviceData(ips[1], auths[1]))
@@ -196,6 +168,35 @@ if __name__ == "__main__":
     for i in range(12):
         panel_id_dict[i] = panel_ids[i]
 
+    #Isaiah's code:
+    frames5 = []
+    html_info = pd.DataFrame()
+    file = codecs.open(
+        'triangulart2.html', "r", "utf-8")
+    my_file_info = file.read()
+    extract_script = re.compile(
+        r"fill\=\"(?P<Colour>[\#[0-9a-zA-Z]*)\" rel\=\"(?P<Number>[0-9]+)")
+    matchiter = extract_script.finditer(my_file_info)
+    for match in matchiter:
+        #print(match.groupdict())
+        html_info = html_info.append(match.groupdict(), ignore_index=True)
+
+    def hex_to_rgb(row):
+        colour = row['Colour'].lstrip('#')
+        rgb = []
+        for i in (0, 2, 4):
+            decimal = int(colour[i:i+2], 16)
+            rgb.append(decimal)
+        return pd.Series([row['Number'], rgb[0], rgb[1], rgb[2]])
+
+    FinalTable = pd.DataFrame()
+    FinalTable = pd.concat([FinalTable, html_info.apply(
+        hex_to_rgb, axis=1)])
+    FinalTable = FinalTable.rename(columns={0: "Id", 1: "R", 2: "G", 3: "B"})
+    # FinalTable = FinalTable.astype(int)
+    #print(FinalTable.iloc[:20])
+
+    ips = ["192.168.1.14", "192.168.1.14", "192.168.1.13", "192.168.1.12", "192.168.1.10", "192.168.1.11", "192.168.1.9", "192.168.1.4", "192.168.1.5", "192.168.1.3", "192.168.1.2", "192.168.1.2"]
     #For loop iterating through panelId dict and color table
     rownum = 0
     panel_id = 0
@@ -203,6 +204,7 @@ if __name__ == "__main__":
     for index, panel in FinalTable.iterrows():
         if (iterate_row == 23):
             sendStreamControlFrames(frames5, ips[rownum])
+            frames5 = []
             rownum += 1
             iterate_row = 0
             panel_id = 0
