@@ -114,7 +114,7 @@ if __name__ == "__main__":
     panel_ids.pop(10)
     panel_ids.insert(10, nine_row)
     panel_ids.insert(11, ten_row)
-    print(panel_ids)
+    #print(panel_ids)
 
     panel_id_dict = {}
 
@@ -127,12 +127,14 @@ if __name__ == "__main__":
     for index, panel in FinalTable.iterrows():
         if (iterate_row == 23):
             #sendStreamControlFrames(frames5, ips[rownum])
+            #print(frames5, '\n', "SIZE:", len(frames5), '\n')
             frames5 = []
             rownum += 1
             iterate_row = 0
             panel_id = 0
 
         if (panel['R'] == 50 & panel['G'] == 50 & panel['B'] == 50):
+            #print({'panelId': panel_id_dict[rownum][panel_id]})
             pass
         else:
             frame = {'panelId': panel_id_dict[rownum][panel_id],
@@ -142,6 +144,5 @@ if __name__ == "__main__":
             panel_id += 1
         iterate_row += 1
     #print(frames5)
-    #print(len(frames5))
 
     
