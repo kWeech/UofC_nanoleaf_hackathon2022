@@ -193,26 +193,26 @@ if __name__ == "__main__":
 
     # Isaiah's code:
     file_list = [
-                    'image_files/background.html',
-                    'image_files/UofC_title.html',
-                    'image_files/dino_standing.html',
-                    'image_files/dino_roar.html',
-                    'image_files/dino_standing.html',
-                    'image_files/dino_mouth_open.html',
-                    'image_files/dino_fire_0.html',
-                    'image_files/dino_fire_1.html',
-                    'image_files/dino_fire_2.html',
-                    'image_files/dino_fire_3.html',
-                    'image_files/dino_mouth_open.html',
-                    'image_files/dino_standing.html',
-                    'image_files/dino_front.html',
-                    'image_files/dino_front_open.html',
-                    'image_files/dino_front_fire_0.html',
-                    'image_files/dino_front_fire_1.html',
-                    'image_files/dino_front_fire_2.html',
-                    'image_files/dino_front_fire_3.html',
-                    'image_files/go_dinos.html'
-                    ]
+        'image_files/background.html',
+        'image_files/UofC_title.html',
+        'image_files/dino_standing.html',
+        'image_files/dino_roar.html',
+        'image_files/dino_standing.html',
+        'image_files/dino_mouth_open.html',
+        'image_files/dino_fire_0.html',
+        'image_files/dino_fire_1.html',
+        'image_files/dino_fire_2.html',
+        'image_files/dino_fire_3.html',
+        'image_files/dino_mouth_open.html',
+        'image_files/dino_standing.html',
+        'image_files/dino_front.html',
+        'image_files/dino_front_open.html',
+        'image_files/dino_front_fire_0.html',
+        'image_files/dino_front_fire_1.html',
+        'image_files/dino_front_fire_2.html',
+        'image_files/dino_front_fire_3.html',
+        'image_files/go_dinos.html'
+    ]
 
     for curr_file in file_list:
         html_info = pd.DataFrame()
@@ -241,7 +241,7 @@ if __name__ == "__main__":
         panel_id = 0
         iterate_row = 0
         for index, panel in FinalTable.iterrows():
-            if (iterate_row == 23):
+            if (iterate_row == 25):
                 sendStreamControlFrames(frames5, ips[rownum])
                 frames5 = []
                 rownum += 1
@@ -257,4 +257,3 @@ if __name__ == "__main__":
                 panel_id += 1
             iterate_row += 1
         sendStreamControlFrames(frames5, ips[rownum])
-        time.sleep(1.5)
