@@ -97,7 +97,8 @@ def sendStreamControlFrames(frames, ip):
     # this number can be found by returning the body in the setStreamControlMode function
     port = 60221
     for frame in frames:
-        stream.append(frame['panelId'] & 0xFF)  # This & 0xFF term makes is so only the last 8 bytes are used,
+        stream.append(frame['panelId'] & 0xFF)  
+        # This & 0xFF term makes is so only the last 8 bytes are used,
         # not sure if it is necessary here but it doesn't hurt
         stream.append(1 & 0xFF)
         stream.append(frame['R'] & 0xFF)
@@ -124,17 +125,29 @@ def getCoordinateRange(pData):
     return coordinateRange
 
 if __name__ == "__main__":
+    ips = ["192.168.1.14", "192.168.1.13", "192.168.1.12", "192.168.1.10", "192.168.1.11", "192.168.1.9", "192.168.1.4", "192.168.1.5", "192.168.1.3", "192.168.1.2"]
+    auths =  ['4xjvV9IJAQDq83SFaROVVzvble3vHwV8', 'LlBI3Odz7EOHR3v5TPwh4fDbGrFuKSq7', 'WKiepsgP7vhnfI4zGBmxVH26Rq6KNFgg', '28vOnfDhQZXeShXjGKWocxHZJUe9NCwn', 'vioLVKiV1IgfsAA94JFFBTFy0vEUG48K', 'UY3DEDumg19xCnwrNV4Btm2FPF0CAhdO', '0AJgQMml89aa12iAYpAqEoWKrKW18JZa', '5EpekYkcVupgIjXM37bRsNG0pE38NfGC', 'cSTCTsuAgBRC7i8F3ug1cc1Z1smDyPQH', 'kAbYywuZWBWsMrFsOluxbnqAXEQqyMKr']
     ip5 = "192.168.1.2"
     auth5 = "s0M4TKH8BhTxdSIReRuAJzAHTYkHTdWU"
-    data5 = json.loads(getDeviceData(ip5, auth5))
+    data0 = json.loads(getDeviceData(ips[0], auths[0]))
+    data1 = json.loads(getDeviceData(ips[1], auths[1]))
+    data2 = json.loads(getDeviceData(ips[2], auths[2]))
+    data3 = json.loads(getDeviceData(ips[3], auths[3]))
+    data4 = json.loads(getDeviceData(ips[4], auths[4]))
+    data5 = json.loads(getDeviceData(ips[5], auths[5]))
+    data6 = json.loads(getDeviceData(ips[6], auths[6]))
+    data7 = json.loads(getDeviceData(ips[7], auths[7]))
+    data8 = json.loads(getDeviceData(ips[8], auths[8]))
+
     positionData5 = data5['panelLayout']['layout']['positionData']
     setStreamControlMode(ip5, auth5, 1)
     frames5 = []
-    T = 1
+    T = 2
 
     for panel in positionData5:
-        R = 255
+        R = 19
         G = 50
-        B = 20
-        frame5 = {'panelId': panel['panelId'], 'R': R, 'G': G, 'B': B, 'T': T}
+        B = 55
+        frame5 = [{'panelId': panel['panelId'], 'R': R, 'G': G, 'B': B, 'T': T}]
+
         sendStreamControlFrames(frame5, ip5)
